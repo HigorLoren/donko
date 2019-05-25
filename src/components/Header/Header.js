@@ -44,6 +44,7 @@ const Header = props => {
       <div className="logoDiv w3-5">
         <img src={logo} alt="Logo Donko - A Simple kanban To Do" className="logo" />
       </div>
+      <div className="spacerHeader" />
       <div className="searchDiv items-center inline-flex w-100">
         <img src={searchIcon} alt="Search Icon" className="searchIcon absolute" />
         <input
@@ -60,7 +61,7 @@ const Header = props => {
       {/* <a href="#" className="link mr3">
         <img src={notificationIcon} alt="Notification Icon" className="notificationIcon" />
       </a> */}
-      <div className="border-left-button-profile" />
+      <div className="spacerHeader" />
       <button
         className="ml2 pl3 pr0 dark-gray fw5 dim flex userMenu items-center mid-gray"
         onClick={() => setShowFloatMenu(prevState => !prevState)}

@@ -6,7 +6,6 @@
 }
 
 .logoDiv {
-  border-right: solid 3px #f7f8f9;
   margin: 10px 0px;
 }
 
@@ -66,7 +65,7 @@
   transition: filter 0.15s ease-in-out;
 }
 
-.border-left-button-profile {
+.spacerHeader {
   border-left: solid 3px #f7f8f9;
   height: 39px;
   width: 3px;
