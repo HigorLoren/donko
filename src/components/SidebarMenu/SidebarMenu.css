@@ -1,0 +1,54 @@
+.sidebarMenu {
+  height: auto;
+  background-color: #fff;
+  /* overflow-y: auto; */
+  box-shadow: 0px -2px 4px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 0 5px;
+}
+
+.boardIcon {
+  width: 35px;
+  height: auto;
+}
+
+.boardOption:first-of-type {
+  margin: 20px 0 20px 0;
+}
+
+.boardOption {
+  padding: 14px 0;
+  margin: 0 0 20px 0;
+}
+
+.settingsIcon {
+  width: 32px !important;
+  height: auto;
+}
+
+.settingsMenuOption {
+  padding: 20px 0 25px 0;
+}
+
+.settingsMenuOption .settingsIcon:hover {
+  opacity: 0.7;
+  transition: opacity 0.12s ease-in-out;
+}
+
+.menuSettings {
+  bottom: 75%;
+  left: 30%;
+  width: 100%;
+  min-width: 110px;
+  min-height: 120px;
+}
+
+.boardOption:not(.boardOptionSelected):hover {
+  opacity: 0.7;
+  transition: opacity 0.12s ease-in-out;
+  background-color: rgb(248, 248, 248);
+}
+
+.boardOptionSelected {
+  border-left: solid 3px #7faff9;
+  cursor: unset !important;
+}
