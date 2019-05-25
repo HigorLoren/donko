@@ -10,6 +10,7 @@ const Cards = props =>
         cardName={card.name}
         notes={card.notes}
         dashColor={card.dashColor}
+        deleteMe={() => props.deleteCard(card)}
       />
     );
   });
