@@ -1,0 +1,30 @@
+.modal-open {
+  overflow: hidden;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    min-height: calc(100% - 3.5rem);
+    max-width: 500px;
+    margin: 1.75rem auto;
+  }
+}
+
+.modal-dialog {
+  pointer-events: none;
+  min-height: calc(100% - 1rem);
+}
+
+.modal {
+  z-index: 1072;
+}
+
+.modal-content {
+  pointer-events: auto;
+  background-clip: padding-box;
+}
+
+.black-offset {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+}

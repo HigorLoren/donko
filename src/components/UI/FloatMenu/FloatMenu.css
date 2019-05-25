@@ -1,0 +1,35 @@
+.floatDropdownMenu {
+  right: 0;
+  top: 0;
+  border-radius: 0.25rem;
+  box-shadow: 1px 1px 3.5px 0 rgba(0, 0, 0, 0.15);
+  position: absolute;
+  padding: 5px 0;
+  z-index: 1000;
+  margin: 0;
+  list-style: none;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  background: #fff;
+  -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.floatDropdownMenu button {
+  font-size: 0.875rem;
+  text-align: left;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-right: 2rem;
+  padding-left: 1rem;
+  color: #555;
+  width: 100%;
+  font-weight: 400;
+  font-family: "helvetica neue", helvetica, sans-serif;
+}
+
+.floatDropdownMenu button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
