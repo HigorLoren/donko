@@ -5,7 +5,7 @@ import { TwitterPicker } from "react-color";
 import Modal from "../../Modal/Modal";
 import FloatMenu from "../../UI/FloatMenu/FloatMenu";
 import Notes from "./Notes/Notes";
-import "./Card.css";
+import classes from "./Card.module.css";
 
 const colorsPicker = [
   "#f1c96f",
@@ -144,14 +144,17 @@ export default class Card extends PureComponent {
     }
 
     return (
-      <div className="w-25 mh3 br3 shadow-6 bg-content relative">
+      <div className={`${classes.Card} w-25 mh3 br3 shadow-6 relative`}>
         {this.state.dashColorChangePickerShow ? (
           <React.Fragment>
             <div
               className="fixed bg-black-20 z-2 top-0 right-0 left-0 bottom-0"
               onClick={() => this.setState({ dashColorChangePickerShow: false })}
             />
-            <div className="dash-gradient-card" style={{ background: this.state.dashNewColor }} />
+            <div
+              className={classes.DashGradientCard}
+              style={{ background: this.state.dashNewColor }}
+            />
             <div className="absolute mt3 left-30perc shadow-5 z-3 bg-white br2 flex justify-end flex-wrap">
               <TwitterPicker
                 color={this.state.dashNewColor}
@@ -168,7 +171,7 @@ export default class Card extends PureComponent {
             </div>
           </React.Fragment>
         ) : (
-          <div className="dash-gradient-card" style={{ background: this.state.dashColor }} />
+          <div className={classes.DashGradientCard} style={{ background: this.state.dashColor }} />
         )}
         <div className="ph3">
           <div className="flex mt3 mb4 justify-between items-center relative">

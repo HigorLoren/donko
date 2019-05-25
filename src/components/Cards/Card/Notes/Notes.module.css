@@ -1,0 +1,7 @@
+.Note button.DeleteNote {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.Note:hover button.DeleteNote {
+  opacity: 1;
+}

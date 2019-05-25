@@ -1,6 +1,6 @@
 import React, { memo, useEffect } from "react";
 import { Fade } from "react-reveal";
-import "./FloatMenu.css";
+import classes from "./FloatMenu.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function FloatMenu(props) {
@@ -14,7 +14,7 @@ function FloatMenu(props) {
 
   return (
     <Fade duration={250}>
-      <ul className="floatDropdownMenu" style={props.customStyle}>
+      <ul className={classes.FloatDropdownMenu} style={props.customStyle}>
         {props.buttons.map((button, id) => (
           <li key={id}>
             <button

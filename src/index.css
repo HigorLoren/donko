@@ -29,6 +29,10 @@ button:focus {
 }
 
 /* Custom Global CSS */
+.modal-open {
+  overflow: hidden;
+}
+
 .w2-5 {
   width: 2.5rem;
 }

@@ -1,4 +1,4 @@
-.floatDropdownMenu {
+.FloatDropdownMenu {
   right: 0;
   top: 0;
   border-radius: 0.25rem;
@@ -17,7 +17,7 @@
   padding-bottom: 0.5rem;
 }
 
-.floatDropdownMenu button {
+.FloatDropdownMenu button {
   font-size: 0.875rem;
   text-align: left;
   padding-top: 0.5rem;
@@ -30,6 +30,6 @@
   font-family: "helvetica neue", helvetica, sans-serif;
 }
 
-.floatDropdownMenu button:hover {
+.FloatDropdownMenu button:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }

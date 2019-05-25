@@ -1,9 +1,9 @@
-.dash-gradient-card {
+.DashGradientCard {
   border-radius: 0.5rem 0.5rem 0 0;
   height: 5px;
   width: 100%;
 }
 
-.card {
+.Card {
   background-color: #f7f8f9;
 }

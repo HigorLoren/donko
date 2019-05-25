@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
-import "./Header.css";
+import classes from "./Header.module.css";
 import Modal from "../Modal/Modal";
 import FloatMenu from "../UI/FloatMenu/FloatMenu";
 import logo from "../../assets/donko-logo.png";
@@ -40,20 +40,20 @@ const Header = props => {
   }
 
   return (
-    <header className="header relative flex items-center nowrap">
-      <div className="logoDiv w3-5">
-        <img src={logo} alt="Logo Donko - A Simple kanban To Do" className="logo" />
+    <header className={`${classes.Header} relative flex items-center nowrap`}>
+      <div className={`${classes.LogoDiv} w3-5`}>
+        <img src={logo} alt="Logo Donko - A Simple kanban To Do" className={classes.Logo} />
       </div>
-      <div className="spacerHeader" />
-      <div className="searchDiv items-center inline-flex w-100">
-        <img src={searchIcon} alt="Search Icon" className="searchIcon absolute" />
+      <div className={classes.SpacerHeader} />
+      <div className={`${classes.SearchDiv} items-center inline-flex w-100`}>
+        <img src={searchIcon} alt="Search Icon" className={`${classes.SearchIcon} absolute`} />
         <input
           type="search"
           name="search"
           id="search"
           value={searchInput}
           onChange={({ target }) => setSearchInput(target.value)}
-          className="searchInput f5 lh-solid w-100 items-center"
+          className={`${classes.SearchInput} f5 lh-solid w-100 items-center`}
           placeholder="Where did I put that thing?"
         />
       </div>
@@ -61,15 +61,15 @@ const Header = props => {
       {/* <a href="#" className="link mr3">
         <img src={notificationIcon} alt="Notification Icon" className="notificationIcon" />
       </a> */}
-      <div className="spacerHeader" />
+      <div className={classes.SpacerHeader} />
       <button
-        className="ml2 pl3 pr0 dark-gray fw5 dim flex userMenu items-center mid-gray"
+        className={`${classes.UserMenu} ml2 pl3 pr0 dark-gray fw5 dim flex items-center mid-gray`}
         onClick={() => setShowFloatMenu(prevState => !prevState)}
       >
         <img
           src={props.user.image}
           alt={`Profile perfil ${props.user.name}`}
-          className="br-100 mw4 mr2 dib profileImageIcon"
+          className={`${classes.ProfileImageIcon} br-100 mw4 mr2 dib`}
         />
         {props.user.name}
       </button>

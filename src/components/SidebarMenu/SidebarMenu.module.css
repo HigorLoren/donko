@@ -1,40 +1,39 @@
-.sidebarMenu {
+.SidebarMenu {
   height: auto;
   background-color: #fff;
-  /* overflow-y: auto; */
   box-shadow: 0px -2px 4px 1px rgba(0, 0, 0, 0.1);
   border-radius: 0 0 0 5px;
 }
 
-.boardIcon {
+.BoardIcon {
   width: 35px;
   height: auto;
 }
 
-.boardOption:first-of-type {
+.BoardOption:first-of-type {
   margin: 20px 0 20px 0;
 }
 
-.boardOption {
+.BoardOption {
   padding: 14px 0;
   margin: 0 0 20px 0;
 }
 
-.settingsIcon {
+.SettingsIcon {
   width: 32px !important;
   height: auto;
 }
 
-.settingsMenuOption {
+.SettingsMenuOption {
   padding: 20px 0 25px 0;
 }
 
-.settingsMenuOption .settingsIcon:hover {
+.SettingsMenuOption .SettingsIcon:hover {
   opacity: 0.7;
   transition: opacity 0.12s ease-in-out;
 }
 
-.menuSettings {
+.MenuSettings {
   bottom: 75%;
   left: 30%;
   width: 100%;
@@ -42,13 +41,13 @@
   min-height: 120px;
 }
 
-.boardOption:not(.boardOptionSelected):hover {
+.BoardOption:not(.BoardOptionSelected):hover {
   opacity: 0.7;
   transition: opacity 0.12s ease-in-out;
   background-color: rgb(248, 248, 248);
 }
 
-.boardOptionSelected {
+.BoardOptionSelected {
   border-left: solid 3px #7faff9;
   cursor: unset !important;
 }
