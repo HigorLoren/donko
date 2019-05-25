@@ -1,0 +1,7 @@
+.note button.delete-note {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.note:hover button.delete-note {
+  opacity: 1;
+}
