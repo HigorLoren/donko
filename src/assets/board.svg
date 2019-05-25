@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" focusable="false" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#BABABA;}
+</style>
+<path class="st0" d="M16,128h416c8.8,0,16-7.2,16-16V48c0-8.8-7.2-16-16-16H16C7.2,32,0,39.2,0,48v64C0,120.8,7.2,128,16,128z
+	 M496,208H80c-8.8,0-16,7.2-16,16v64c0,8.8,7.2,16,16,16h416c8.8,0,16-7.2,16-16v-64C512,215.2,504.8,208,496,208z M432,384H16
+	c-8.8,0-16,7.2-16,16v64c0,8.8,7.2,16,16,16h416c8.8,0,16-7.2,16-16v-64C448,391.2,440.8,384,432,384z"/>
+</svg>

@@ -1,10 +1,29 @@
 import React, { PureComponent } from "react";
 import { createPortal } from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { TwitterPicker } from "react-color";
 import Modal from "../../Modal/Modal";
 import FloatMenu from "../../UI/FloatMenu/FloatMenu";
 import Notes from "./Notes/Notes";
 import "./Card.css";
+
+const colorsPicker = [
+  "#f1c96f",
+  "#f76e6e",
+  "#8086ca",
+  "#72f1b7",
+  "#000000",
+  "#FF6900",
+  "#FCB900",
+  "#7BDCB5",
+  "#00D084",
+  "#8ED1FC",
+  "#0693E3",
+  "#ABB8C3",
+  "#EB144C",
+  "#F78DA7",
+  "#9900EF"
+];
 
 export default class Card extends PureComponent {
   constructor(props) {
@@ -12,6 +31,8 @@ export default class Card extends PureComponent {
     this.state = {
       cardName: this.props.cardName,
       dashColor: this.props.dashColor,
+      dashNewColor: this.props.dashColor,
+      dashColorChangePickerShow: false,
       renameCardModalShow: false,
       deleteCardModalShow: false,
       showFloatMenu: false,
@@ -60,6 +81,13 @@ export default class Card extends PureComponent {
     let updatedCardName = this.state.inputRenameCard;
     // --END--
     this.setState({ cardName: updatedCardName, renameCardModalShow: false });
+  };
+
+  handleCardDashColorChange = event => {
+    // BACKENDPLACEHOLDER:
+    let updatedDashColor = this.state.dashNewColor;
+    // --END--
+    this.setState({ dashColor: updatedDashColor, dashColorChangePickerShow: false });
   };
 
   render() {
@@ -117,7 +145,31 @@ export default class Card extends PureComponent {
 
     return (
       <div className="w-25 mh3 br3 shadow-6 bg-content relative">
-        <div className="dash-gradient-card" style={{ background: this.state.dashColor }} />
+        {this.state.dashColorChangePickerShow ? (
+          <React.Fragment>
+            <div
+              className="fixed bg-black-20 z-2 top-0 right-0 left-0 bottom-0"
+              onClick={() => this.setState({ dashColorChangePickerShow: false })}
+            />
+            <div className="dash-gradient-card" style={{ background: this.state.dashNewColor }} />
+            <div className="absolute mt3 left-30perc shadow-5 z-3 bg-white br2 flex justify-end flex-wrap">
+              <TwitterPicker
+                color={this.state.dashNewColor}
+                colors={colorsPicker}
+                onChange={color => this.setState({ dashNewColor: color.hex })}
+                width="100%"
+              />
+              <button
+                className="ba br1 mt2 mr2 mb2 pointer pv1 ph3 b--light-silver dim mid-gray"
+                onClick={this.handleCardDashColorChange}
+              >
+                Salvar
+              </button>
+            </div>
+          </React.Fragment>
+        ) : (
+          <div className="dash-gradient-card" style={{ background: this.state.dashColor }} />
+        )}
         <div className="ph3">
           <div className="flex mt3 mb4 justify-between items-center relative">
             <h5 className="f4 gray ma0 fw5">{this.state.cardName}</h5>
@@ -132,6 +184,11 @@ export default class Card extends PureComponent {
             {this.state.showFloatMenu ? (
               <FloatMenu
                 buttons={[
+                  {
+                    onClickFunction: () => this.setState({ dashColorChangePickerShow: true }),
+                    icon: "palette",
+                    text: "Change dash color"
+                  },
                   {
                     onClickFunction: () => this.setState({ renameCardModalShow: true }),
                     icon: "pen-square",
