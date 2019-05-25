@@ -10,7 +10,7 @@ function FloatMenu(props) {
     return () => {
       document.removeEventListener("click", props.deleteMe);
     };
-  }, []);
+  }, [props.deleteMe]);
 
   return (
     <Fade duration={250}>
