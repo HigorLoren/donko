@@ -11,7 +11,7 @@ const SidebarMenu = props => {
     <div className={`${classes.SidebarMenu} ph0 fl w3-5 flex flex-wrap flex-column`}>
       {props.boards.map(board => {
         return (
-          <div
+          <button
             key={board.id}
             onClick={() => props.boardClicked(board)}
             className={`${classes.BoardOption} tc w-100${
@@ -20,7 +20,7 @@ const SidebarMenu = props => {
           >
             <img src={boardIcon} alt="board Icon" className={classes.BoardIcon} />
             <p className="mb0 mt1 f7 fw7 mid-gray">{board.name}</p>
-          </div>
+          </button>
         );
       })}
       <div className={`${classes.AddBoardOption} tc w-100 relative`}>
