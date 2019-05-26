@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { createPortal } from "react-dom";
 import Header from "../../components/Header/Header";
 import SidebarMenu from "../../components/SidebarMenu/SidebarMenu";
 import Cards from "../../components/Cards/Cards";
+import Modal from "../../components/Modal/Modal";
 
 let user = {
   name: "",
@@ -12,6 +14,7 @@ export default class Workbench extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      newBoardModalShow: false,
       boards: [],
       openBoard: {
         id: null,
@@ -20,6 +23,10 @@ export default class Workbench extends Component {
       }
     };
   }
+
+  handleChange = ({ target: { name, value } }) => {
+    this.setState({ [name]: value });
+  };
 
   componentDidMount() {
     // prettier-ignore
@@ -53,6 +60,9 @@ export default class Workbench extends Component {
     });
   };
 
+  //
+  // Handler Cards
+
   handleDeleteCard = cardToDelete => {
     // BACKENDPLACEHOLDER:
     let updatedCards = this.state.openBoard.cards.filter(card => card.id !== cardToDelete.id);
@@ -61,15 +71,67 @@ export default class Workbench extends Component {
     this.setState({ openBoard: { cards: updatedCards } });
   };
 
+  handleNewBoard = event => {
+    event.preventDefault();
+    // BACKENDPLACEHOLDER:
+    let maxBoardId = 0;
+    this.state.boards.forEach(board => {
+      if (board.id > maxBoardId) maxBoardId = board.id;
+    });
+
+    let newBoard = { id: maxBoardId + 1, name: this.state.inputNewBoardName };
+    let updatedBoards = [...this.state.boards, newBoard];
+    // --END--
+    console.log("TCL: updatedBoards", updatedBoards);
+
+    this.setState({ boards: updatedBoards, newBoardModalShow: false });
+    this.handleSidebarItemChange(newBoard);
+  };
+
   render() {
+    let modal = null;
+
+    if (this.state.newBoardModalShow) {
+      modal = createPortal(
+        <Modal
+          title="New Board"
+          callbackCloseModal={() => this.setState({ newBoardModalShow: false })}
+          footer={
+            <button
+              className="ba br1 mt3 pointer pv1 ph3 b--light-silver dim mid-gray"
+              onClick={this.handleNewBoard}
+              type="button"
+            >
+              Salvar
+            </button>
+          }
+        >
+          <form onSubmit={this.handleNewBoard}>
+            <input
+              type="text"
+              autoFocus
+              className="w-100 br2 ba pv1 b--light-gray pl2 lh-copy"
+              id="inputNewBoardName"
+              placeholder="New board name"
+              onChange={this.handleChange}
+              name="inputNewBoardName"
+            />
+          </form>
+        </Modal>,
+        document.body
+      );
+    }
+
     return (
       <React.Fragment>
+        {modal}
         <Header user={user} />
         <div className="flex" style={{ minHeight: "calc(100vh - 132px)", overflow: "auto" }}>
           <SidebarMenu
             boardClicked={this.handleSidebarItemChange.bind(this)}
             boardSelected={this.state.openBoard.id}
             boards={this.state.boards}
+            newBoard={() => this.setState({ newBoardModalShow: true })}
           />
           <div className="fl pa4 w-100 items-start flex">
             {this.state.openBoard.cards.length > 0 ? (

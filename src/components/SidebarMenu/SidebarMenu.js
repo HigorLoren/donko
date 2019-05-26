@@ -23,6 +23,11 @@ const SidebarMenu = props => {
           </div>
         );
       })}
+      <div className={`${classes.AddBoardOption} tc w-100 relative`}>
+        <button className="pointer" onClick={props.newBoard}>
+          <FontAwesomeIcon icon="plus-circle" className={`${classes.AddBoardIcon} moon-gray`} />
+        </button>
+      </div>
       <div
         className={`${classes.SettingsMenuOption} tc w-100 relative`}
         style={{ marginTop: "auto" }}

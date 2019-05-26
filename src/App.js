@@ -6,6 +6,7 @@ import Workbench from "./containers/Workbench/Workbench";
 import {
   faEllipsisV,
   faPlus,
+  faPlusCircle,
   faTimesCircle,
   faPalette,
   faPenSquare,
@@ -15,9 +16,11 @@ import {
   faSignOutAlt,
   faCog
 } from "@fortawesome/free-solid-svg-icons";
+
 library.add(
   faEllipsisV,
   faPlus,
+  faPlusCircle,
   faTimesCircle,
   faPalette,
   faPenSquare,
