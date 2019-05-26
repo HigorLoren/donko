@@ -5,20 +5,22 @@ import classes from "./Modal.module.css";
 
 const Modal = props => {
   const [showModal, setShowModal] = useState(false);
-  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    setShowModal(true);
-    setLoaded(true);
     document.body.classList.add("modal-open");
+    handleShowModal();
     return () => {
       document.body.classList.remove("modal-open");
     };
   }, []);
 
-  if (!showModal && loaded) {
+  const handleShowModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
     props.callbackCloseModal();
-  }
+  };
 
   return (
     <Fade duration={300} when={showModal}>
@@ -29,7 +31,7 @@ const Modal = props => {
       >
         <div
           className={`${classes.BlackOffset} top-0 right-0 left-0 bottom-0`}
-          onClick={() => setShowModal(false)}
+          onClick={handleCloseModal}
         />
         <div className={`${classes.ModalDialog} flex w-auto relative items-center`} role="document">
           <div
@@ -42,7 +44,7 @@ const Modal = props => {
               <button
                 type="button"
                 className="close mid-gray pointer dim"
-                onClick={() => setShowModal(false)}
+                onClick={handleCloseModal}
               >
                 <FontAwesomeIcon icon="times" className="" />
               </button>
