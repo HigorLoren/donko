@@ -82,7 +82,6 @@ export default class Workbench extends Component {
     let newBoard = { id: maxBoardId + 1, name: this.state.inputNewBoardName };
     let updatedBoards = [...this.state.boards, newBoard];
     // --END--
-    console.log("TCL: updatedBoards", updatedBoards);
 
     this.setState({ boards: updatedBoards, newBoardModalShow: false });
     this.handleSidebarItemChange(newBoard);
