@@ -62,12 +62,9 @@ export default class Card extends PureComponent {
     }));
   };
 
-  handleDeleteNote = event => {
-    event.preventDefault();
+  handleDeleteNote = idNoteToDelete => {
     // BACKENDPLACEHOLDER:
-    let updatedNotes = this.state.notes.filter(
-      item => item.id !== +event.currentTarget.getAttribute("data-id")
-    );
+    let updatedNotes = this.state.notes.filter(note => note.id !== idNoteToDelete);
     //  --END--
     this.setState({ notes: updatedNotes });
   };

@@ -16,11 +16,8 @@ const Notes = props => {
           >
             <p className="mv1 word-break">{item.text}</p>
             <button
-              data-id={item.id}
-              onClick={props.deleteNote}
-              type="button"
+              onClick={() => props.deleteNote(item.id)}
               className={`${classes.DeleteNote} close pointer o-0`}
-              aria-label="Close"
             >
               <FontAwesomeIcon
                 icon="times-circle"
