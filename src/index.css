@@ -56,3 +56,7 @@ button:focus {
 .left-30perc {
   left: 30%;
 }
+
+.bg-black-03 {
+  background-color: rgba(0, 0, 0, 0.03);
+}

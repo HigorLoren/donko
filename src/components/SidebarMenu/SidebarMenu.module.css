@@ -19,11 +19,6 @@
   margin: 10px 0 10px 0;
 }
 
-.AddBoardIcon {
-  width: 32px !important;
-  height: auto;
-}
-
 .AddBoardOption {
   padding: 14px 0;
   margin: 0 0 20px 0;
@@ -33,11 +28,6 @@
   opacity: 0.7;
   transition: opacity 0.12s ease-in-out;
   color: rgb(248, 248, 248);
-}
-
-.SettingsIcon {
-  width: 32px !important;
-  height: auto;
 }
 
 .SettingsMenuOption {

@@ -24,8 +24,8 @@ const SidebarMenu = props => {
         );
       })}
       <div className={`${classes.AddBoardOption} tc w-100 relative`}>
-        <button className="pointer" onClick={props.newBoard}>
-          <FontAwesomeIcon icon="plus-circle" className={`${classes.AddBoardIcon} moon-gray`} />
+        <button className="pointer bg-black-03 ph3 pv2 br2" onClick={props.newBoard}>
+          <FontAwesomeIcon icon="plus" size="lg" className="black-10" />
         </button>
       </div>
       <div
@@ -33,7 +33,7 @@ const SidebarMenu = props => {
         style={{ marginTop: "auto" }}
       >
         <button className="pointer" onClick={() => changeShowFloatMenu(prevState => !prevState)}>
-          <FontAwesomeIcon icon="cog" className={`${classes.SettingsIcon} silver`} />
+          <FontAwesomeIcon icon="cog" size="2x" className="light-silver" />
         </button>
         {showFloatMenu ? (
           <FloatMenu
