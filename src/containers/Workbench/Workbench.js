@@ -68,8 +68,41 @@ export default class Workbench extends Component {
     let updatedCards = this.state.openBoard.cards.filter(card => card.id !== cardToDelete.id);
     // --END--
 
-    this.setState({ openBoard: { cards: updatedCards } });
+    this.setState(prevState => ({
+      openBoard: {
+        ...prevState.openBoard,
+        cards: updatedCards
+      }
+    }));
   };
+
+  handleNewCard = newCard => {
+    // BACKENDPLACEHOLDER:
+    let maxCardId = 0;
+    this.state.openBoard.cards.forEach(card => {
+      if (card.id > maxCardId) maxCardId = card.id;
+    });
+    let updatedCards = [
+      ...this.state.openBoard.cards,
+      {
+        id: maxCardId + 1,
+        name: newCard.name,
+        dashColor: newCard.dashColor,
+        notes: []
+      }
+    ];
+    // --END--
+
+    this.setState(prevState => ({
+      openBoard: {
+        ...prevState.openBoard,
+        cards: updatedCards
+      }
+    }));
+  };
+
+  //
+  // Handler Boards
 
   handleNewBoard = event => {
     event.preventDefault();
@@ -85,6 +118,22 @@ export default class Workbench extends Component {
 
     this.setState({ boards: updatedBoards, newBoardModalShow: false });
     this.handleSidebarItemChange(newBoard);
+  };
+
+  //
+  // Handle Cards Zone
+
+  // @ Scroll to the right until get to the end
+  handleScrollToRightOfCardsZone = () => {
+    let lastScroll;
+
+    let slideToRightInterval = setInterval(() => {
+      document.getElementById("cardsZone").scrollLeft += 10;
+      if (lastScroll === document.getElementById("cardsZone").scrollLeft) {
+        window.clearInterval(slideToRightInterval);
+      }
+      lastScroll = document.getElementById("cardsZone").scrollLeft;
+    }, 25);
   };
 
   render() {
@@ -132,9 +181,14 @@ export default class Workbench extends Component {
             boards={this.state.boards}
             newBoard={() => this.setState({ newBoardModalShow: true })}
           />
-          <div className="fl pa4 w-100 items-start flex">
+          <div id="cardsZone" className="fl pa4 w-100 overflow-auto items-start flex z-0">
             {this.state.openBoard.cards.length > 0 ? (
-              <Cards cards={this.state.openBoard.cards} deleteCard={this.handleDeleteCard} />
+              <Cards
+                cards={this.state.openBoard.cards}
+                newCard={this.handleNewCard}
+                deleteCard={this.handleDeleteCard}
+                scrollToNewCard={this.handleScrollToRightOfCardsZone}
+              />
             ) : (
               <p className="fw1 f3 h100 flex items-center center light-silver">
                 Select a board to start.

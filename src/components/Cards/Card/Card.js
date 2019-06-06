@@ -152,7 +152,7 @@ export default class Card extends PureComponent {
               className={classes.DashGradientCard}
               style={{ background: this.state.dashNewColor }}
             />
-            <div className="absolute mt3 left-30perc shadow-5 z-3 bg-white br2 flex justify-end flex-wrap">
+            <div className="absolute mt3 left30 shadow-5 z-3 bg-white br2 flex justify-end flex-wrap">
               <TwitterPicker
                 color={this.state.dashNewColor}
                 colors={colorsPicker}
