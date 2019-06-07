@@ -63,7 +63,9 @@ const Header = props => {
       </a> */}
       <div className={classes.SpacerHeader} />
       <button
-        className={`${classes.UserMenu} ml2 pl3 pr0 dark-gray fw5 dim flex items-center mid-gray`}
+        className={`${
+          classes.UserMenu
+        } ml2 pl3 pr0 dark-gray fw5 dim pointer flex items-center mid-gray`}
         onClick={() => setShowFloatMenu(prevState => !prevState)}
       >
         <img

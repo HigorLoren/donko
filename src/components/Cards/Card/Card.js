@@ -75,7 +75,7 @@ export default class Card extends PureComponent {
   handleCardRename = event => {
     event.preventDefault();
     // BACKENDPLACEHOLDER:
-    let updatedCardName = this.state.inputRenameCard;
+    let updatedCardName = this.state.inputRenameCard || ".";
     // --END--
     this.setState({ cardName: updatedCardName, renameCardModalShow: false });
   };
@@ -112,6 +112,7 @@ export default class Card extends PureComponent {
               className="w-100 br2 ba pv1 b--light-gray pl2 lh-copy"
               id="inputRenameCard"
               placeholder="New name"
+              value={this.state.inputRenameCard}
               onChange={this.handleChange}
               name="inputRenameCard"
             />
@@ -131,6 +132,7 @@ export default class Card extends PureComponent {
             <button
               className="ba br1 mt3 pointer pv2 lh-copy ph3 bg-red b--black-025 dim white"
               onClick={this.props.deleteMe}
+              autoFocus
             >
               I really want to delete.
             </button>
@@ -149,7 +151,7 @@ export default class Card extends PureComponent {
               onClick={() => this.setState({ dashColorChangePickerShow: false })}
             />
             <div
-              className={classes.DashGradientCard}
+              className={classes.DashColorCard}
               style={{ background: this.state.dashNewColor }}
             />
             <div className="absolute mt3 left30 shadow-5 z-3 bg-white br2 flex justify-end flex-wrap">
@@ -168,7 +170,7 @@ export default class Card extends PureComponent {
             </div>
           </React.Fragment>
         ) : (
-          <div className={classes.DashGradientCard} style={{ background: this.state.dashColor }} />
+          <div className={classes.DashColorCard} style={{ background: this.state.dashColor }} />
         )}
         <div className="ph3">
           <div className="flex mt3 mb4 justify-between items-center relative">
@@ -190,7 +192,11 @@ export default class Card extends PureComponent {
                     text: "Change dash color"
                   },
                   {
-                    onClickFunction: () => this.setState({ renameCardModalShow: true }),
+                    onClickFunction: () =>
+                      this.setState({
+                        inputRenameCard: this.state.cardName,
+                        renameCardModalShow: true
+                      }),
                     icon: "pen-square",
                     text: "Rename Card"
                   },

@@ -14,8 +14,8 @@ const SidebarMenu = props => {
           <button
             key={board.id}
             onClick={() => props.boardClicked(board)}
-            className={`${classes.BoardOption} tc w-100${
-              props.boardSelected === board.id ? ` ${classes.BoardOptionSelected} pointer` : ""
+            className={`${classes.BoardOption} tc w-100 ${
+              props.boardSelected === board.id ? classes.BoardOptionSelected : "pointer"
             }`}
           >
             <img src={boardIcon} alt="board Icon" className={classes.BoardIcon} />
