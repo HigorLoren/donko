@@ -1,0 +1,64 @@
+.SearchDiv input:hover,
+.SearchDiv input:focus {
+  background-color: #f6f6f6;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.SearchIcon {
+  width: 22px;
+  height: auto;
+  margin: 0 0 0 9px;
+}
+
+.SearchInput {
+  color: #696969;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 0 10px 42px;
+  background-color: #fff;
+}
+
+.SearchInput::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  background-image: url(../../assets/cancel.svg);
+  height: 15px;
+  width: 15px;
+  cursor: pointer;
+  margin: 0 13px 0 0;
+}
+
+.SearchInput::placeholder {
+  color: #b3b4bb;
+}
+
+.SearchInput:focus {
+  outline: none;
+}
+
+.SearchResultItemList {
+  top: 78%;
+  max-height: calc(100vh - 50px);
+}
+
+.SearchItem {
+  display: block;
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1.5px solid rgb(247, 247, 247);
+  margin: 2px 0;
+}
+
+.SearchItem:last-child {
+  border-bottom: none;
+}
+
+.Note {
+  background-color: #007bff;
+}
+
+.Card {
+  background-color: #28a745;
+}
+
+.Board {
+  background-color: #dc3545;
+}

@@ -173,7 +173,7 @@ export default class Workbench extends Component {
     return (
       <React.Fragment>
         {modal}
-        <Header user={user} />
+        <Header user={user} boardsToSearch={this.state.boards} />
         <div className="flex" style={{ minHeight: "calc(100vh - 132px)", overflow: "auto" }}>
           <SidebarMenu
             boardClicked={this.handleSidebarItemChange.bind(this)}

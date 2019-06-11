@@ -4,11 +4,10 @@ import classes from "./Header.module.css";
 import Modal from "../Modal/Modal";
 import FloatMenu from "../UI/FloatMenu/FloatMenu";
 import logo from "../../assets/donko-logo.png";
-import searchIcon from "../../assets/search.svg";
+import SearchBar from "../SearchBar/SearchBar";
 // import notificationIcon from "./notification.svg";
 
 const Header = props => {
-  const [searchInput, setSearchInput] = useState("");
   const [showFloatMenu, setShowFloatMenu] = useState(false);
   const [showModalSignOut, setShowModalSignOut] = useState(false);
 
@@ -45,18 +44,7 @@ const Header = props => {
         <img src={logo} alt="Logo Donko - A Simple kanban To Do" className={classes.Logo} />
       </div>
       <div className={classes.SpacerHeader} />
-      <div className={`${classes.SearchDiv} items-center inline-flex w-100`}>
-        <img src={searchIcon} alt="Search Icon" className={`${classes.SearchIcon} absolute`} />
-        <input
-          type="search"
-          name="search"
-          id="search"
-          value={searchInput}
-          onChange={({ target }) => setSearchInput(target.value)}
-          className={`${classes.SearchInput} f5 lh-solid w-100 items-center`}
-          placeholder="Where did I put that thing?"
-        />
-      </div>
+      <SearchBar customStyle="mh3 w-100" boardsToSearch={props.boardsToSearch} />
       {/* TODO: Add Notifications */}
       {/* <a href="#" className="link mr3">
         <img src={notificationIcon} alt="Notification Icon" className="notificationIcon" />
