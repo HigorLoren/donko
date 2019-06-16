@@ -130,7 +130,7 @@ export default class Card extends PureComponent {
         >
           <div className="flex justify-center">
             <button
-              className="ba br1 mt3 pointer pv2 lh-copy ph3 bg-red b--black-025 dim white"
+              className="ba br1 mt3 pointer pv2 lh-copy ph3 bg-red b--black-025 dim btn-visible-focus white"
               onClick={this.props.deleteMe}
               autoFocus
             >
