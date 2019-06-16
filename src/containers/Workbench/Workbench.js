@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { createPortal } from "react-dom";
 import Header from "../../components/Header/Header";
 import SidebarMenu from "../../components/SidebarMenu/SidebarMenu";
-import Cards from "../../components/Cards/Cards";
 import Modal from "../../components/Modal/Modal";
+import Board from "../../components/Board/Board";
 
 let user = {
   name: "",
@@ -16,7 +16,7 @@ export default class Workbench extends Component {
     this.state = {
       newBoardModalShow: false,
       boards: [],
-      openBoard: {
+      openedBoard: {
         id: null,
         name: "",
         cards: []
@@ -24,22 +24,25 @@ export default class Workbench extends Component {
     };
   }
 
-  handleChange = ({ target: { name, value } }) => {
-    this.setState({ [name]: value });
-  };
-
   componentDidMount() {
-    // prettier-ignore
     // BACKENDPLACEHOLDER:
-    this.setState({boards: [{id: "0",name: "Board 1"},{id: "1",name: "Board 2"},{id: "2",name: "Board 3"}]});
+    // prettier-ignore
+    let loadedBoards = [{id: 123,name: "Board 1"},{id: 123123,name: "Board 2"},{id: 2311,name: "Board 3"}];
+
     user = {
       name: "Higor Lorenzon",
       image: "https://api.adorable.io/avatars/40/abott@adorable.png"
     };
     // --END--
+
+    this.setState({ boards: loadedBoards });
   }
 
-  handleSidebarItemChange = board => {
+  handleChange = ({ target: { name, value } }) => {
+    this.setState({ [name]: value });
+  };
+
+  handleSidebarItemChange = boardToChange => {
     // BACKENDPLACEHOLDER:
     // prettier-ignore
     let cardsFromBoard = [
@@ -50,59 +53,16 @@ export default class Workbench extends Component {
     ];
     // --END--
 
-    document.title = board.name + " - Donko Board";
+    document.title = boardToChange.name + " - Donko Board";
+
     this.setState({
-      openBoard: {
-        id: board.id,
-        name: board.name,
+      openedBoard: {
+        id: boardToChange.id,
+        name: boardToChange.name,
         cards: cardsFromBoard
       }
     });
   };
-
-  //
-  // Handler Cards
-
-  handleDeleteCard = cardToDelete => {
-    // BACKENDPLACEHOLDER:
-    let updatedCards = this.state.openBoard.cards.filter(card => card.id !== cardToDelete.id);
-    // --END--
-
-    this.setState(prevState => ({
-      openBoard: {
-        ...prevState.openBoard,
-        cards: updatedCards
-      }
-    }));
-  };
-
-  handleNewCard = newCard => {
-    // BACKENDPLACEHOLDER:
-    let maxCardId = 0;
-    this.state.openBoard.cards.forEach(card => {
-      if (card.id > maxCardId) maxCardId = card.id;
-    });
-    let updatedCards = [
-      ...this.state.openBoard.cards,
-      {
-        id: maxCardId + 1,
-        name: newCard.name,
-        dashColor: newCard.dashColor,
-        notes: []
-      }
-    ];
-    // --END--
-
-    this.setState(prevState => ({
-      openBoard: {
-        ...prevState.openBoard,
-        cards: updatedCards
-      }
-    }));
-  };
-
-  //
-  // Handler Boards
 
   handleNewBoard = event => {
     event.preventDefault();
@@ -120,21 +80,45 @@ export default class Workbench extends Component {
     this.handleSidebarItemChange(newBoard);
   };
 
-  //
-  // Handle Cards Zone
-
-  // @ Scroll to the right until get to the end
-  handleScrollToRightOfCardsZone = () => {
-    let lastScroll;
-
-    let slideToRightInterval = setInterval(() => {
-      document.getElementById("cardsZone").scrollLeft += 10;
-      if (lastScroll === document.getElementById("cardsZone").scrollLeft) {
-        window.clearInterval(slideToRightInterval);
+  // Handle Cards
+  handleNewCard = newCard => {
+    // BACKENDPLACEHOLDER:
+    let maxCardId = 0;
+    this.state.openedBoard.cards.forEach(card => {
+      if (card.id > maxCardId) maxCardId = card.id;
+    });
+    let updatedCards = [
+      ...this.state.openedBoard.cards,
+      {
+        id: maxCardId + 1,
+        name: newCard.name,
+        dashColor: newCard.dashColor,
+        notes: []
       }
-      lastScroll = document.getElementById("cardsZone").scrollLeft;
-    }, 25);
+    ];
+    // --END--
+
+    this.setState(prevState => ({
+      openedBoard: {
+        ...prevState.openedBoard,
+        cards: updatedCards
+      }
+    }));
   };
+
+  handleDeleteCard = cardToDelete => {
+    // BACKENDPLACEHOLDER:
+    let updatedCards = this.state.openedBoard.cards.filter(card => card.id !== cardToDelete.id);
+    // --END--
+
+    this.setState(prevState => ({
+      openedBoard: {
+        ...prevState.openedBoard,
+        cards: updatedCards
+      }
+    }));
+  };
+  // End Handle CARDS
 
   render() {
     let modal = null;
@@ -177,24 +161,15 @@ export default class Workbench extends Component {
         <div className="flex" style={{ minHeight: "calc(100vh - 132px)", overflow: "auto" }}>
           <SidebarMenu
             boardClicked={this.handleSidebarItemChange.bind(this)}
-            boardSelected={this.state.openBoard.id}
+            boardSelected={this.state.openedBoard.id}
             boards={this.state.boards}
             newBoard={() => this.setState({ newBoardModalShow: true })}
           />
-          <div id="cardsZone" className="fl pa4 w-100 overflow-auto items-start flex z-0">
-            {this.state.openBoard.cards.length > 0 ? (
-              <Cards
-                cards={this.state.openBoard.cards}
-                newCard={this.handleNewCard}
-                deleteCard={this.handleDeleteCard}
-                scrollToNewCard={this.handleScrollToRightOfCardsZone}
-              />
-            ) : (
-              <p className="fw1 f3 h100 flex items-center center light-silver">
-                Select a board to start.
-              </p>
-            )}
-          </div>
+          <Board
+            cards={this.state.openedBoard.cards}
+            handleDeleteCard={this.handleDeleteCard}
+            handleNewCard={this.handleNewCard}
+          />
         </div>
       </React.Fragment>
     );
