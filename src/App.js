@@ -32,7 +32,14 @@ library.add(
 );
 
 function App() {
-  return <Workbench />;
+  return (
+    <Workbench
+      user={{
+        name: "Higor Lorenzon",
+        image: "https://api.adorable.io/avatars/40/abott@adorable.png"
+      }}
+    />
+  );
 }
 
 export default App;
