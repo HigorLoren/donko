@@ -16,6 +16,7 @@ export default class Workbench extends Component {
     this.state = {
       newBoardModalShow: false,
       boards: [],
+      // @HigorLoren: I had already tried to manipulate the opened board in the boards' array, but it was unhappy and harder.
       openedBoard: {
         id: null,
         name: "",
@@ -87,6 +88,7 @@ export default class Workbench extends Component {
     this.state.openedBoard.cards.forEach(card => {
       if (card.id > maxCardId) maxCardId = card.id;
     });
+
     let updatedCards = [
       ...this.state.openedBoard.cards,
       {
@@ -157,7 +159,7 @@ export default class Workbench extends Component {
     return (
       <React.Fragment>
         {modal}
-        <Header user={user} boardsToSearch={this.state.boards} />
+        <Header user={user} dataToSearch={this.state.boards} />
         <div className="flex" style={{ minHeight: "calc(100vh - 132px)", overflow: "auto" }}>
           <SidebarMenu
             boardClicked={this.handleSidebarItemChange.bind(this)}

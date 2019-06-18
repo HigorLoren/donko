@@ -21,26 +21,12 @@ const SearchBar = props => {
 
   const handleSearch = inputText => {
     // TODO: SEARCH SCRIPT
-
-    // BACKENDPLACEHOLDER:
-    // --END--
-
     let dataToSearch = [];
 
-    props.boardsToSearch.forEach(board => {
-      dataToSearch.push({
-        title: board.name,
-        type: "Board"
-      });
-
-      if (board.cards)
-        board.cards.forEach(card => {
-          dataToSearch.push({
-            title: card.name,
-            path: board.name,
-            type: "Card"
-          });
-        });
+    dataToSearch.push({
+      title: "",
+      path: "",
+      type: ""
     });
 
     let inputTextFormatedAndSplited = inputText.toLowerCase().split(" ");
