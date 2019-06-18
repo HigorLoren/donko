@@ -2,6 +2,12 @@
 
 Another Kanban Web App (but simple and Open Source).
 
+[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
+
+[![GitHub version](https://badge.fury.io/gh/HigorLoren%2Fdonko.png)](https://badge.fury.io/gh/HigorLoren%2Fdonko)
+[![GitHub](https://img.shields.io/github/license/higorloren/donko.svg?style=plastic)](https://github.com/HigorLoren/donko/blob/master/LICENSE)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.png?style=plastic)](https://github.com/prettier/prettier)
+
 ## Task List Before the First Deploy
 
 - [ ] Search bar (make sure the user is online, otherwise use the OFFLINE content)

@@ -5,10 +5,10 @@ import SidebarMenu from "../../components/SidebarMenu/SidebarMenu";
 import Modal from "../../components/Modal/Modal";
 import Board from "../../components/Board/Board";
 
-let user = {
-  name: "",
-  image: ""
-};
+let user = Object.assign({
+  name: null,
+  image: null
+});
 
 export default class Workbench extends Component {
   constructor(props) {
@@ -17,11 +17,11 @@ export default class Workbench extends Component {
       newBoardModalShow: false,
       boards: [],
       // @HigorLoren: I had already tried to manipulate the opened board in the boards' array, but it was unhappy and harder.
-      openedBoard: {
+      openedBoard: Object.assign({
         id: null,
         name: "",
         cards: []
-      }
+      })
     };
   }
 
@@ -30,10 +30,7 @@ export default class Workbench extends Component {
     // prettier-ignore
     let loadedBoards = [{id: 123,name: "Board 1"},{id: 123123,name: "Board 2"},{id: 2311,name: "Board 3"}];
 
-    user = {
-      name: "Higor Lorenzon",
-      image: "https://api.adorable.io/avatars/40/abott@adorable.png"
-    };
+    user = this.props.user;
     // --END--
 
     this.setState({ boards: loadedBoards });
