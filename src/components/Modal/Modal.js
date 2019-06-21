@@ -1,18 +1,11 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Fade } from "react-reveal";
 import classes from "./Modal.module.css";
 
 const Modal = props => {
   const [showModal, setShowModal] = useState(false);
-
-  useEffect(() => {
-    document.body.classList.add("modal-open");
-    handleShowModal();
-    return () => {
-      document.body.classList.remove("modal-open");
-    };
-  }, []);
 
   const handleShowModal = () => {
     setShowModal(true);
@@ -21,6 +14,14 @@ const Modal = props => {
   const handleCloseModal = () => {
     props.callbackCloseModal();
   };
+
+  useEffect(() => {
+    document.body.classList.add("modal-open");
+    handleShowModal();
+    return () => {
+      document.body.classList.remove("modal-open");
+    };
+  }, []);
 
   return (
     <Fade duration={300} when={showModal}>
@@ -56,6 +57,20 @@ const Modal = props => {
       </div>
     </Fade>
   );
+};
+
+Modal.propTypes = {
+  callbackCloseModal: PropTypes.func,
+  title: PropTypes.string,
+  children: PropTypes.node,
+  footer: PropTypes.node
+};
+
+Modal.defaultProps = {
+  callbackCloseModal: () => null,
+  title: "",
+  children: null,
+  footer: null
 };
 
 export default Modal;

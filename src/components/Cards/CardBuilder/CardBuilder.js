@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const newCardDashColor = "#636363";
@@ -61,7 +62,7 @@ const CardBuilder = props => {
               onChange={event => setTextInputNameCard(event.target.value)}
               className="f4 w-100 br2 bw1 b--moon-gray b--solid outline-0 ph2 gray ma0 fw5"
             />
-            <button className="button-reset pointer gray hover-mid-gray textshadow-1">
+            <button type="button" className="button-reset pointer gray hover-mid-gray textshadow-1">
               <FontAwesomeIcon icon="ellipsis-v" className="" />
             </button>
           </div>
@@ -85,6 +86,15 @@ const CardBuilder = props => {
       </div>
     </div>
   );
+};
+
+CardBuilder.propTypes = {
+  scrollToNewCard: PropTypes.func,
+  newCard: PropTypes.func.isRequired
+};
+
+CardBuilder.defaultProps = {
+  scrollToNewCard: () => null
 };
 
 export default CardBuilder;

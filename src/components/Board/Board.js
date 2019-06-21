@@ -1,12 +1,13 @@
 import React from "react";
-import Cards from "../../components/Cards/Cards";
+import PropTypes from "prop-types";
+import Cards from "../Cards/Cards";
 
 const Board = props => {
   // @ Scroll to the right until get to the end
   const handleScrollToRightOfCardsZone = () => {
     let lastScroll;
 
-    let slideToRightInterval = setInterval(() => {
+    const slideToRightInterval = setInterval(() => {
       document.getElementById("cardsZone").scrollLeft += 10;
       if (lastScroll === document.getElementById("cardsZone").scrollLeft) {
         window.clearInterval(slideToRightInterval);
@@ -31,6 +32,12 @@ const Board = props => {
       )}
     </div>
   );
+};
+
+Board.propTypes = {
+  cards: PropTypes.arrayOf(PropTypes.object).isRequired,
+  handleDeleteCard: PropTypes.func.isRequired,
+  handleNewCard: PropTypes.func.isRequired
 };
 
 export default Board;

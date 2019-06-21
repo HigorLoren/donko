@@ -1,14 +1,10 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { createPortal } from "react-dom";
 import Header from "../../components/Header/Header";
 import SidebarMenu from "../../components/SidebarMenu/SidebarMenu";
 import Modal from "../../components/Modal/Modal";
 import Board from "../../components/Board/Board";
-
-let user = Object.assign({
-  name: null,
-  image: null
-});
 
 export default class Workbench extends Component {
   constructor(props) {
@@ -28,9 +24,7 @@ export default class Workbench extends Component {
   componentDidMount() {
     // BACKENDPLACEHOLDER:
     // prettier-ignore
-    let loadedBoards = [{id: 123,name: "Board 1"},{id: 123123,name: "Board 2"},{id: 2311,name: "Board 3"}];
-
-    user = this.props.user;
+    const loadedBoards = [{id: 123,name: "Board 1"},{id: 123123,name: "Board 2"},{id: 2311,name: "Board 3"}];
     // --END--
 
     this.setState({ boards: loadedBoards });
@@ -43,7 +37,7 @@ export default class Workbench extends Component {
   handleSidebarItemChange = boardToChange => {
     // BACKENDPLACEHOLDER:
     // prettier-ignore
-    let cardsFromBoard = [
+    const cardsFromBoard = [
       { id: 0, name: "Backlog", dashColor: "#f1c96f", notes: ["item 1", "item 2", "item 3"].map((text, id) => ({ id, text })) },
       { id: 1, name: "To Do", dashColor: "#f76e6e", notes: ["item 1", "item 2", "item 3"].map((text, id) => ({ id, text })) },
       { id: 2, name: "Doing", dashColor: "#8086ca", notes: ["item 1", "item 2", "item 3"].map((text, id) => ({ id, text })) },
@@ -51,7 +45,7 @@ export default class Workbench extends Component {
     ];
     // --END--
 
-    document.title = boardToChange.name + " - Donko Board";
+    document.title = `${boardToChange.name} - Donko Board`;
 
     this.setState({
       openedBoard: {
@@ -70,8 +64,9 @@ export default class Workbench extends Component {
       if (board.id > maxBoardId) maxBoardId = board.id;
     });
 
-    let newBoard = { id: maxBoardId + 1, name: this.state.inputNewBoardName };
-    let updatedBoards = [...this.state.boards, newBoard];
+    const newBoard = { id: maxBoardId + 1, name: this.state.inputNewBoardName };
+    // eslint-disable-next-line react/no-access-state-in-setstate
+    const updatedBoards = [...this.state.boards, newBoard];
     // --END--
 
     this.setState({ boards: updatedBoards, newBoardModalShow: false });
@@ -86,7 +81,7 @@ export default class Workbench extends Component {
       if (card.id > maxCardId) maxCardId = card.id;
     });
 
-    let updatedCards = [
+    const updatedCards = [
       ...this.state.openedBoard.cards,
       {
         id: maxCardId + 1,
@@ -107,7 +102,7 @@ export default class Workbench extends Component {
 
   handleDeleteCard = cardToDelete => {
     // BACKENDPLACEHOLDER:
-    let updatedCards = this.state.openedBoard.cards.filter(card => card.id !== cardToDelete.id);
+    const updatedCards = this.state.openedBoard.cards.filter(card => card.id !== cardToDelete.id);
     // --END--
 
     this.setState(prevState => ({
@@ -156,10 +151,10 @@ export default class Workbench extends Component {
     return (
       <React.Fragment>
         {modal}
-        <Header user={user} dataToSearch={this.state.boards} />
+        <Header user={this.props.user} dataToSearch={this.state.boards} />
         <div className="flex" style={{ minHeight: "calc(100vh - 132px)", overflow: "auto" }}>
           <SidebarMenu
-            boardClicked={this.handleSidebarItemChange.bind(this)}
+            boardClicked={this.handleSidebarItemChange}
             boardSelected={this.state.openedBoard.id}
             boards={this.state.boards}
             newBoard={() => this.setState({ newBoardModalShow: true })}
@@ -174,3 +169,10 @@ export default class Workbench extends Component {
     );
   }
 }
+
+Workbench.propTypes = {
+  user: PropTypes.shape({
+    name: PropTypes.string,
+    image: PropTypes.string
+  }).isRequired
+};

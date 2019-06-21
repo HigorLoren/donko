@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import boardIcon from "../../assets/board.svg";
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import classes from "./SidebarMenu.module.css";
+import boardIcon from "../../assets/board.svg";
 import FloatMenu from "../UI/FloatMenu/FloatMenu";
+import classes from "./SidebarMenu.module.css";
 
 const SidebarMenu = props => {
   const [showFloatMenu, changeShowFloatMenu] = useState(false);
@@ -13,6 +14,7 @@ const SidebarMenu = props => {
         return (
           <button
             key={board.id}
+            type="button"
             onClick={() => props.boardClicked(board)}
             className={`${classes.BoardOption} tc w-100 ${
               props.boardSelected === board.id ? classes.BoardOptionSelected : "pointer"
@@ -24,7 +26,7 @@ const SidebarMenu = props => {
         );
       })}
       <div className={`${classes.AddBoardOption} tc w-100 relative`}>
-        <button className="pointer bg-black-03 ph3 pv2 br2" onClick={props.newBoard}>
+        <button className="pointer bg-black-03 ph3 pv2 br2" type="button" onClick={props.newBoard}>
           <FontAwesomeIcon icon="plus" size="lg" className="black-10" />
         </button>
       </div>
@@ -32,7 +34,11 @@ const SidebarMenu = props => {
         className={`${classes.SettingsMenuOption} tc w-100 relative`}
         style={{ marginTop: "auto" }}
       >
-        <button className="pointer" onClick={() => changeShowFloatMenu(prevState => !prevState)}>
+        <button
+          className="pointer"
+          type="button"
+          onClick={() => changeShowFloatMenu(prevState => !prevState)}
+        >
           <FontAwesomeIcon icon="cog" size="2x" className="light-silver" />
         </button>
         {showFloatMenu ? (
@@ -56,6 +62,19 @@ const SidebarMenu = props => {
       </div>
     </div>
   );
+};
+
+SidebarMenu.propTypes = {
+  newBoard: PropTypes.func,
+  boards: PropTypes.arrayOf(PropTypes.object).isRequired,
+  boardClicked: PropTypes.func,
+  boardSelected: PropTypes.number
+};
+
+SidebarMenu.defaultProps = {
+  boardClicked: () => null,
+  newBoard: () => null,
+  boardSelected: null
 };
 
 export default SidebarMenu;

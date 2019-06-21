@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import TransitionGroup from "react-transition-group/TransitionGroup";
 import { Fade } from "react-reveal";
+import TransitionGroup from "react-transition-group/TransitionGroup";
 import classes from "./Notes.module.css";
 
 const Notes = props => {
@@ -18,6 +19,7 @@ const Notes = props => {
             <button
               onClick={() => props.deleteNote(item.id)}
               className={`${classes.DeleteNote} close pointer o-0`}
+              type="button"
             >
               <FontAwesomeIcon
                 icon="times-circle"
@@ -30,6 +32,15 @@ const Notes = props => {
       ))}
     </TransitionGroup>
   );
+};
+
+Notes.propTypes = {
+  notesArray: PropTypes.arrayOf(PropTypes.string).isRequired,
+  deleteNote: PropTypes.func
+};
+
+Notes.defaultProps = {
+  deleteNote: () => null
 };
 
 export default Notes;

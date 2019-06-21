@@ -1,0 +1,33 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "airbnb/rules/react",
+    "airbnb/base",
+    "react-app",
+    "prettier"
+  ],
+  "plugins": [
+    "prettier",
+    "import",
+    "react",
+    "react-hooks",
+    "jest"
+  ],
+  "rules": {
+    "react/prop-types": "warn",
+    "react/button-has-type": "warn",
+    "import/order": "warn",
+    "no-console": 0,
+    "import/no-named-as-default": 0,
+    "react/jsx-filename-extension": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "react/destructuring-assignment": 0,
+    "react/no-array-index-key": 0,
+    "react/jsx-wrap-multilines": 0,
+    "no-param-reassign": 0
+  }
+}

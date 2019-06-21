@@ -1,23 +1,13 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import ClickedOutside from "../../hoc/ClickedOutside/ClickedOutside";
-import classes from "./SearchBar.module.css";
 import searchIcon from "../../assets/search.svg";
+import classes from "./SearchBar.module.css";
 
 const SearchBar = props => {
   const [searchInput, setSearchInput] = useState("");
   const [showSearchList, setShowSearchList] = useState(false);
   const [searchResultItems, setSearchResultItems] = useState([]);
-
-  const handleOnChangeSearchInput = ({ target }) => {
-    setSearchInput(target.value);
-    if (target.value) {
-      handleSearch(target.value);
-      setShowSearchList(true);
-    } else {
-      setShowSearchList(false);
-      setSearchResultItems([]);
-    }
-  };
 
   const handleSearch = inputText => {
     // TODO: SEARCH SCRIPT
@@ -29,22 +19,34 @@ const SearchBar = props => {
       type: ""
     });
 
-    let inputTextFormatedAndSplited = inputText.toLowerCase().split(" ");
+    const inputTextFormatedAndSplited = inputText.toLowerCase().split(" ");
 
     // Search Script
     dataToSearch = dataToSearch.filter(item => {
-      let itemFormated = JSON.stringify(item).toLowerCase();
+      const itemFormated = JSON.stringify(item).toLowerCase();
       let allWordsMatched;
 
       // Do while returning true
       inputTextFormatedAndSplited.every(word => {
-        return (allWordsMatched = itemFormated.indexOf(word) === -1 ? false : true);
+        allWordsMatched = itemFormated.indexOf(word) !== -1;
+        return allWordsMatched;
       });
 
       return allWordsMatched;
     });
 
     setSearchResultItems(dataToSearch);
+  };
+
+  const handleOnChangeSearchInput = ({ target }) => {
+    setSearchInput(target.value);
+    if (target.value) {
+      handleSearch(target.value);
+      setShowSearchList(true);
+    } else {
+      setShowSearchList(false);
+      setSearchResultItems([]);
+    }
   };
 
   return (
@@ -85,7 +87,7 @@ const SearchBar = props => {
                   </h4>
                   {item.path ? (
                     <p className="mt0 mb1 f7 silver">
-                      {item.path} > {item.title}
+                      {item.path} {">"} {item.title}
                     </p>
                   ) : null}
                 </a>
@@ -96,6 +98,14 @@ const SearchBar = props => {
       </div>
     </ClickedOutside>
   );
+};
+
+SearchBar.propTypes = {
+  customStyle: PropTypes.string
+};
+
+SearchBar.defaultProps = {
+  customStyle: ""
 };
 
 export default SearchBar;

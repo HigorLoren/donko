@@ -1,21 +1,23 @@
 import React from "react";
 import "tachyons";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import Workbench from "./containers/Workbench/Workbench";
 
 import {
+  faCog,
   faEllipsisV,
-  faPlus,
-  faPlusCircle,
-  faTimesCircle,
   faPalette,
   faPenSquare,
-  faTrashAlt,
-  faTimes,
-  faUserCog,
+  faPlus,
+  faPlusCircle,
   faSignOutAlt,
-  faCog
+  faTimes,
+  faTimesCircle,
+  faTrashAlt,
+  faUserCog
 } from "@fortawesome/free-solid-svg-icons";
+
+import { library } from "@fortawesome/fontawesome-svg-core";
+
+import Workbench from "./containers/Workbench/Workbench";
 
 library.add(
   faEllipsisV,

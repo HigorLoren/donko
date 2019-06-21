@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 export default class ClickedOutside extends Component {
   componentDidMount() {
@@ -36,3 +37,8 @@ export default class ClickedOutside extends Component {
     return <React.Fragment>{children}</React.Fragment>;
   }
 }
+
+ClickedOutside.propTypes = {
+  onClickedOutside: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired
+};

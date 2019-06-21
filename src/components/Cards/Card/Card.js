@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 import { createPortal } from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TwitterPicker } from "react-color";
@@ -51,7 +52,7 @@ export default class Card extends PureComponent {
   handleAddNote = event => {
     event.preventDefault();
     // BACKENDPLACEHOLDER:
-    let updatedNotes = [
+    const updatedNotes = [
       ...this.state.notes,
       { id: this.state.notes.length + 1, text: this.state.todo || "-" }
     ];
@@ -64,7 +65,8 @@ export default class Card extends PureComponent {
 
   handleDeleteNote = idNoteToDelete => {
     // BACKENDPLACEHOLDER:
-    let updatedNotes = this.state.notes.filter(note => note.id !== idNoteToDelete);
+    // eslint-disable-next-line react/no-access-state-in-setstate
+    const updatedNotes = this.state.notes.filter(note => note.id !== idNoteToDelete);
     //  --END--
     this.setState({ notes: updatedNotes });
   };
@@ -75,14 +77,16 @@ export default class Card extends PureComponent {
   handleCardRename = event => {
     event.preventDefault();
     // BACKENDPLACEHOLDER:
-    let updatedCardName = this.state.inputRenameCard || ".";
+    // eslint-disable-next-line react/no-access-state-in-setstate
+    const updatedCardName = this.state.inputRenameCard || ".";
     // --END--
     this.setState({ cardName: updatedCardName, renameCardModalShow: false });
   };
 
   handleCardDashColorChange = event => {
     // BACKENDPLACEHOLDER:
-    let updatedDashColor = this.state.dashNewColor;
+    // eslint-disable-next-line react/no-access-state-in-setstate
+    const updatedDashColor = this.state.dashNewColor;
     // --END--
     this.setState({ dashColor: updatedDashColor, dashColorChangePickerShow: false });
   };
@@ -133,6 +137,7 @@ export default class Card extends PureComponent {
               className="ba br1 mt3 pointer pv2 lh-copy ph3 bg-red b--black-025 dim btn-visible-focus white"
               onClick={this.props.deleteMe}
               autoFocus
+              type="button"
             >
               I really want to delete.
             </button>
@@ -164,6 +169,7 @@ export default class Card extends PureComponent {
               <button
                 className="ba br1 mt2 mr2 mb2 pointer pv1 ph3 b--light-silver dim mid-gray"
                 onClick={this.handleCardDashColorChange}
+                type="button"
               >
                 Salvar
               </button>
@@ -180,6 +186,7 @@ export default class Card extends PureComponent {
               onClick={() =>
                 this.setState(prevState => ({ showFloatMenu: !prevState.showFloatMenu }))
               }
+              type="button"
             >
               <FontAwesomeIcon icon="ellipsis-v" className="" />
             </button>
@@ -193,10 +200,10 @@ export default class Card extends PureComponent {
                   },
                   {
                     onClickFunction: () =>
-                      this.setState({
-                        inputRenameCard: this.state.cardName,
+                      this.setState(prevState => ({
+                        inputRenameCard: prevState.cardName,
                         renameCardModalShow: true
-                      }),
+                      })),
                     icon: "pen-square",
                     text: "Rename Card"
                   },
@@ -242,3 +249,14 @@ export default class Card extends PureComponent {
     );
   }
 }
+
+Card.propTypes = {
+  cardName: PropTypes.string.isRequired,
+  dashColor: PropTypes.string.isRequired,
+  notes: PropTypes.arrayOf(PropTypes.string),
+  deleteMe: PropTypes.func.isRequired
+};
+
+Card.defaultProps = {
+  notes: []
+};
