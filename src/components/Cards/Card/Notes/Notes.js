@@ -35,7 +35,7 @@ const Notes = props => {
 };
 
 Notes.propTypes = {
-  notesArray: PropTypes.arrayOf(PropTypes.string).isRequired,
+  notesArray: PropTypes.arrayOf(PropTypes.object).isRequired,
   deleteNote: PropTypes.func
 };
 

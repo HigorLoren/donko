@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Cards from "../Cards/Cards";
+import classes from "./Board.module.css";
 
 const Board = props => {
   // @ Scroll to the right until get to the end
@@ -17,7 +18,7 @@ const Board = props => {
   };
 
   return (
-    <div id="cardsZone" className="fl pa4 w-100 overflow-auto items-start flex z-0">
+    <div id="cardsZone" className={`${classes.Board} fl pa4 w-100 overflow-auto items-start flex`}>
       {props.cards.length > 0 ? (
         <Cards
           cards={props.cards}

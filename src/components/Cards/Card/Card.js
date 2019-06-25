@@ -253,7 +253,7 @@ export default class Card extends PureComponent {
 Card.propTypes = {
   cardName: PropTypes.string.isRequired,
   dashColor: PropTypes.string.isRequired,
-  notes: PropTypes.arrayOf(PropTypes.string),
+  notes: PropTypes.arrayOf(PropTypes.object),
   deleteMe: PropTypes.func.isRequired
 };
 
