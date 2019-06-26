@@ -1,4 +1,5 @@
 import React from "react";
+import { Route, Switch } from "react-router-dom";
 import "tachyons";
 
 import {
@@ -18,6 +19,7 @@ import {
 import { library } from "@fortawesome/fontawesome-svg-core";
 
 import Workbench from "./containers/Workbench/Workbench";
+import Settings from "./containers/Settings/Settings";
 
 library.add(
   faEllipsisV,
@@ -35,12 +37,20 @@ library.add(
 
 function App() {
   return (
-    <Workbench
-      user={{
-        name: "Higor Lorenzon",
-        image: "https://api.adorable.io/avatars/40/abott@adorable.png"
-      }}
-    />
+    <Switch>
+      <Route path="/settings" render={() => <Settings />} />
+      <Route
+        path="/"
+        render={() => (
+          <Workbench
+            user={{
+              name: "Higor Lorenzon",
+              image: "https://api.adorable.io/avatars/40/abott@adorable.png"
+            }}
+          />
+        )}
+      />
+    </Switch>
   );
 }
 

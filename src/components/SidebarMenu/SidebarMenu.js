@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import boardIcon from "../../assets/board.svg";
 import FloatMenu from "../UI/FloatMenu/FloatMenu";
@@ -46,14 +47,10 @@ const SidebarMenu = props => {
             customStyle={{ left: "40%", right: "auto", top: "auto", bottom: "80%" }}
             buttons={[
               {
-                onClickFunction: () => null,
+                // eslint-disable-next-line react/prop-types
+                onClickFunction: () => props.history.push("/settings"),
                 icon: "",
                 text: "Settings"
-              },
-              {
-                onClickFunction: () => null,
-                icon: "",
-                text: "Item 2"
               }
             ]}
             deleteMe={() => changeShowFloatMenu(false)}
@@ -77,4 +74,4 @@ SidebarMenu.defaultProps = {
   boardSelected: null
 };
 
-export default SidebarMenu;
+export default withRouter(SidebarMenu);

@@ -54,7 +54,7 @@ export default class Card extends PureComponent {
     // BACKENDPLACEHOLDER:
     const updatedNotes = [
       ...this.state.notes,
-      { id: this.state.notes.length + 1, text: this.state.todo || "-" }
+      { id: this.state.notes.length + 1, text: this.state.todo }
     ];
     // --END--
     this.setState(prevState => ({
