@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { createPortal } from "react-dom";
 import Modal from "../Modal/Modal";
@@ -13,7 +14,10 @@ const Header = props => {
   const [showModalSignOut, setShowModalSignOut] = useState(false);
 
   // TODO: Handle Log Out
-  const handleLogOut = () => {};
+  const handleLogOut = () => {
+    localStorage.clear();
+    props.history.push("/login");
+  };
 
   useEffect(() => {
     return () => {
@@ -96,4 +100,4 @@ Header.propTypes = {
   user: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
-export default Header;
+export default withRouter(Header);

@@ -29,6 +29,10 @@ button:focus {
   background-color: #f7f8f9;
 }
 
+#root:empty {
+  box-shadow: none;
+}
+
 /* Custom Global CSS */
 .modal-open {
   overflow: hidden;
