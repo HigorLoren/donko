@@ -4,12 +4,13 @@ import { withRouter } from "react-router-dom";
 import useForm from "../../hooks/useForm/useForm";
 
 const SignIn = props => {
-  const login = user => {
+  const login = userDataForm => {
     // BACKENDPLACEHOLDER:
     // Look for the email and password in DB and retrive a token
-    console.log(JSON.stringify(user));
-    const token = "123";
+    console.log("User data in login:", JSON.stringify(userDataForm));
+    const token = "usdsfdigsfhd";
     // --END--
+
     localStorage.setItem("token", token);
     props.history.push("/");
   };
@@ -23,7 +24,7 @@ const SignIn = props => {
           <legend className="f2 fw7 mid-gray ph0 mh0 tc">Create Account</legend>
           <div className="mt4">
             <input
-              className="pv2 ph3 input-reset bw0 bg-black-05 br2 w-100"
+              className="pv2 ph3 input-reset bw0 bg-black-05 br2 w-100 lh-copy"
               type="email"
               name="email-address"
               placeholder="Email"
@@ -34,7 +35,7 @@ const SignIn = props => {
           </div>
           <div className="mv3">
             <input
-              className="pv2 ph3 input-reset bw0 bg-black-05 br2 w-100"
+              className="pv2 ph3 input-reset bw0 bg-black-05 br2 w-100 lh-copy"
               type="password"
               name="password"
               placeholder="Password"
@@ -44,7 +45,7 @@ const SignIn = props => {
             />
           </div>
           <label className="pa0 ma0 lh-copy f6 pointer">
-            <input type="checkbox" /> Remember me
+            <input type="checkbox" onChange={handleChange} /> Remember me
           </label>
         </fieldset>
         <div className="">

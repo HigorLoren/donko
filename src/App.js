@@ -46,17 +46,18 @@ const App = () => {
     // --END--
   };
 
+  const token = sessionStorage.getItem("token");
+
   return (
     <Switch>
       <Route path="/settings" component={Settings} />
-      <Route path="/Login" component={Login} />
+      <Route path="/Login" render={() => (token ? <Redirect to="/" /> : <Login />)} />
       <Route
         path="/"
         exact
-        render={() => {
-          const token = localStorage.getItem("token");
-          return token ? <Workbench user={handleGetUser(token)} /> : <Redirect to="/login" />;
-        }}
+        render={() =>
+          token ? <Workbench user={handleGetUser(token)} /> : <Redirect to="/login" />
+        }
       />
     </Switch>
   );
