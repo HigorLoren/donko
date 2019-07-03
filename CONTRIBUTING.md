@@ -1,7 +1,8 @@
 # Contributing
 
-When contributing to this repository, please first discuss the change you wish to make via issue,
-email, or any other method with the owners of this repository before making a change.
+When contributing to this repository, please first create a new branch for yours changes.
+
+We would love (but you are not obligated) if you discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
 
 ## A Few Things to Know Before Contributing
 
@@ -14,6 +15,16 @@ email, or any other method with the owners of this repository before making a ch
 - The CSS styles are all in modules, if you want something in the global scope please use the `src/index.css`.
 
 - The project doesn't follow a visual design language (like Material Design), but please try to no lose the visual identity.
+
+## First Things First
+
+- Create a branch for your edits.
+
+- When Pulling Request, **reference any relevant issues** or supporting documentation (for example, _"Closes #37."_)
+
+- When updating the UI and style files. Please **include screenshots of the before and after** of your changes. Insert the images into the body of your pull request.
+
+- If you want to make a **substantial contribution**, open an issue to ask before working on it.
 
 ## Pull Request Process
 
