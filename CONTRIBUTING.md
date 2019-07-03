@@ -5,7 +5,7 @@ email, or any other method with the owners of this repository before making a ch
 
 ## A Few Things to Know Before Contributing
 
-- This project uses Prettier with **only one** setting changed: `printWidth: 100` _(but you don't have to worry, because the code is formatted automatically before any commit)_.
+- This project uses Prettier with **only one** setting changed: `printWidth: 100` _(You don't have to worry about eslint-prettier warns, because the code is formatted automatically before any commit)_ PS: If you think that eslint-prettier is annoying, you can "eslint.run": "onSave" on your editor.
 
 - We use Gitmoji :clown_face: to make better commit messages. (Just get the gitmoji code [here](https://gitmoji.carloscuesta.me/) and past on the commit message).
 
