@@ -1,18 +1,19 @@
-import React from "react";
-import { createPortal } from "react-dom";
-import { withRouter } from "react-router-dom";
-import useForm from "../../hooks/useForm/useForm";
+import React from 'react';
+import { createPortal } from 'react-dom';
+import { withRouter } from 'react-router-dom';
+import useForm from '../../hooks/useForm/useForm';
 
-const SignIn = props => {
+const SignUp = props => {
   const login = userDataForm => {
     // BACKENDPLACEHOLDER:
-    // Look for the email and password in DB and retrive a token
-    console.log("User data in login:", JSON.stringify(userDataForm));
-    const token = "usdsfdigsfhd";
+    // Save email and password in DB and retrive a token
+    console.log('User data in signup:', JSON.stringify(userDataForm));
+    console.log(userDataForm.rememberMe);
+    const token = 'usdsfdigsfhd';
     // --END--
 
-    localStorage.setItem("token", token);
-    props.history.push("/");
+    localStorage.setItem('token', token);
+    props.history.push('/');
   };
 
   const { handleChange, handleSubmit } = useForm(login);
@@ -20,13 +21,13 @@ const SignIn = props => {
   return createPortal(
     <div className="measure center shadow-5 bg-white br3 pa4 mv3">
       <form className="" method="POST" onSubmit={handleSubmit}>
-        <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-          <legend className="f2 fw7 mid-gray ph0 mh0 tc">Create Account</legend>
+        <fieldset id="register" className="ba b--transparent ph0 mh0">
+          <legend className="f2 fw7 mid-gray ph0 mh0 tc">Register</legend>
           <div className="mt4">
             <input
               className="pv2 ph3 input-reset bw0 bg-black-05 br2 w-100 lh-copy"
               type="email"
-              name="email-address"
+              name="emailAddress"
               placeholder="Email"
               onChange={handleChange}
               id="email-address"
@@ -45,7 +46,8 @@ const SignIn = props => {
             />
           </div>
           <label className="pa0 ma0 lh-copy f6 pointer">
-            <input type="checkbox" onChange={handleChange} /> Remember me
+            <input type="checkbox" name="rememberMe" onChange={handleChange} />
+            <span> Remember me</span>
           </label>
         </fieldset>
         <div className="">
@@ -59,7 +61,7 @@ const SignIn = props => {
         <div className="lh-copy mt4 flex">
           <div className="w-50">
             <a href="#0" className="f6 dim mid-gray">
-              Sign In
+              Sign Up
             </a>
           </div>
           <div className="w-50 tr">
@@ -74,4 +76,4 @@ const SignIn = props => {
   );
 };
 
-export default withRouter(SignIn);
+export default withRouter(SignUp);

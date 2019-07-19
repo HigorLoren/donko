@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const useForm = callback => {
   const [values, setValues] = useState({});
@@ -10,7 +10,11 @@ const useForm = callback => {
 
   const handleChange = event => {
     event.persist();
-    setValues(valuesForSet => ({ ...valuesForSet, [event.target.name]: event.target.value }));
+    if (event.target.type === 'checkbox') {
+      setValues(valuesForSet => ({ ...valuesForSet, [event.target.name]: event.target.checked }));
+    } else {
+      setValues(valuesForSet => ({ ...valuesForSet, [event.target.name]: event.target.value }));
+    }
   };
 
   return {

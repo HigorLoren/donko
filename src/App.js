@@ -1,6 +1,5 @@
-import React from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
-import "tachyons";
+import React from 'react';
+import 'tachyons';
 
 import {
   faCog,
@@ -14,13 +13,11 @@ import {
   faTimesCircle,
   faTrashAlt,
   faUserCog
-} from "@fortawesome/free-solid-svg-icons";
+} from '@fortawesome/free-solid-svg-icons';
 
-import { library } from "@fortawesome/fontawesome-svg-core";
+import { library } from '@fortawesome/fontawesome-svg-core';
 
-import Workbench from "./containers/Workbench/Workbench";
-import Settings from "./containers/Settings/Settings";
-import Login from "./containers/Login/SignIn";
+import Routes from './routes';
 
 library.add(
   faEllipsisV,
@@ -36,31 +33,6 @@ library.add(
   faCog
 );
 
-const App = () => {
-  const handleGetUser = token => {
-    // BACKENDPLACEHOLDER:
-    return {
-      name: "Higor Lorenzon",
-      image: "https://api.adorable.io/avatars/40/abott@adorable.png"
-    };
-    // --END--
-  };
-
-  const token = sessionStorage.getItem("token");
-
-  return (
-    <Switch>
-      <Route path="/settings" component={Settings} />
-      <Route path="/Login" render={() => (token ? <Redirect to="/" /> : <Login />)} />
-      <Route
-        path="/"
-        exact
-        render={() =>
-          token ? <Workbench user={handleGetUser(token)} /> : <Redirect to="/login" />
-        }
-      />
-    </Switch>
-  );
-};
+const App = () => <Routes />;
 
 export default App;
