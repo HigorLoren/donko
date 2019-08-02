@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { createPortal } from "react-dom";
-import Header from "../../components/Header/Header";
-import SidebarMenu from "../../components/SidebarMenu/SidebarMenu";
-import Modal from "../../components/Modal/Modal";
-import Board from "../../components/Board/Board";
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { createPortal } from 'react-dom';
+import Header from '../../components/Header/Header';
+import SidebarMenu from '../../components/SidebarMenu/SidebarMenu';
+import Modal from '../../components/Modal/Modal';
+import Board from '../../components/Board/Board';
 
-export default class Workbench extends Component {
+class Workbench extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,7 +15,7 @@ export default class Workbench extends Component {
       // @HigorLoren: I had already tried to manipulate the opened board in the boards' array, but it was unhappy and harder.
       openedBoard: Object.assign({
         id: null,
-        name: "",
+        name: '',
         cards: []
       })
     };
@@ -24,7 +24,7 @@ export default class Workbench extends Component {
   componentDidMount() {
     // BACKENDPLACEHOLDER:
     // prettier-ignore
-    const loadedBoards = [{id: 123,name: "Board 1"},{id: 123123,name: "Board 2"},{id: 2311,name: "Board 3"}];
+    const loadedBoards = [{id: 123,name: 'Board 1'},{id: 123123,name: 'Board 2'},{id: 2311,name: 'Board 3'}];
     // --END--
 
     this.setState({ boards: loadedBoards });
@@ -38,10 +38,10 @@ export default class Workbench extends Component {
     // BACKENDPLACEHOLDER:
     // prettier-ignore
     const cardsFromBoard = [
-      { id: 0, name: "Backlog", dashColor: "#f1c96f", notes: ["item 1", "item 2", "item 3"].map((text, id) => ({ id, text })) },
-      { id: 1, name: "To Do", dashColor: "#f76e6e", notes: ["item 1", "item 2", "item 3"].map((text, id) => ({ id, text })) },
-      { id: 2, name: "Doing", dashColor: "#8086ca", notes: ["item 1", "item 2", "item 3"].map((text, id) => ({ id, text })) },
-      { id: 3, name: "Done", dashColor: "#72f1b7", notes: ["item 1", "item 2", "item 3"].map((text, id) => ({ id, text })) }
+      { id: 0, name: 'Backlog', dashColor: '#f1c96f', notes: ['item 1', 'item 2', 'item 3'].map((text, id) => ({ id, text })) },
+      { id: 1, name: 'To Do', dashColor: '#f76e6e', notes: ['item 1', 'item 2', 'item 3'].map((text, id) => ({ id, text })) },
+      { id: 2, name: 'Doing', dashColor: '#8086ca', notes: ['item 1', 'item 2', 'item 3'].map((text, id) => ({ id, text })) },
+      { id: 3, name: 'Done', dashColor: '#72f1b7', notes: ['item 1', 'item 2', 'item 3'].map((text, id) => ({ id, text })) }
     ];
     // --END--
 
@@ -151,8 +151,8 @@ export default class Workbench extends Component {
     return (
       <React.Fragment>
         {modal}
-        <Header user={this.props.user} dataToSearch={this.state.boards} />
-        <div className="flex" style={{ minHeight: "calc(100vh - 132px)", overflow: "auto" }}>
+        <Header dataToSearch={this.state.boards} />
+        <div className="flex" style={{ minHeight: 'calc(100vh - 132px)', overflow: 'auto' }}>
           <SidebarMenu
             boardClicked={this.handleSidebarItemChange}
             boardSelected={this.state.openedBoard.id}
@@ -170,9 +170,4 @@ export default class Workbench extends Component {
   }
 }
 
-Workbench.propTypes = {
-  user: PropTypes.shape({
-    name: PropTypes.string,
-    image: PropTypes.string
-  }).isRequired
-};
+export default withRouter(Workbench);

@@ -1,5 +1,6 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import useForm from '../../hooks/useForm/useForm';
 
@@ -76,4 +77,8 @@ const SignIn = props => {
   );
 };
 
-export default withRouter(SignIn);
+const mapStateToProps = state => ({
+  currentUser: state.user.currentUser
+});
+
+export default withRouter(connect(mapStateToProps)(SignIn));

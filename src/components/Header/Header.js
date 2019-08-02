@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
-import { createPortal } from "react-dom";
-import Modal from "../Modal/Modal";
-import FloatMenu from "../UI/FloatMenu/FloatMenu";
-import logo from "../../assets/donko-logo.png";
-import SearchBar from "../SearchBar/SearchBar";
+import React, { useState, useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { createPortal } from 'react-dom';
+import { connect } from 'react-redux';
+import Modal from '../Modal/Modal';
+import FloatMenu from '../UI/FloatMenu/FloatMenu';
+import logo from '../../assets/donko-logo.png';
+import SearchBar from '../SearchBar/SearchBar';
 // import notificationIcon from "./notification.svg";
-import classes from "./Header.module.css";
+import classes from './Header.module.css';
 
 const Header = props => {
   const [showFloatMenu, setShowFloatMenu] = useState(false);
@@ -16,7 +17,7 @@ const Header = props => {
   // TODO: Handle Log Out
   const handleLogOut = () => {
     localStorage.clear();
-    props.history.push("/login");
+    props.history.push('/login');
   };
 
   useEffect(() => {
@@ -65,26 +66,26 @@ const Header = props => {
         type="button"
       >
         <img
-          src={props.user.image}
-          alt={`Profile perfil ${props.user.name}`}
+          src={props.currentUser.image}
+          alt={`Profile perfil ${props.currentUser.name}`}
           className={`${classes.ProfileImageIcon} br-100 mw4 mr2 dib`}
         />
-        {props.user.name}
+        {props.currentUser.name}
       </button>
 
       {showFloatMenu ? (
         <FloatMenu
-          customStyle={{ top: "94%" }}
+          customStyle={{ top: '94%' }}
           buttons={[
             {
               onClickFunction: () => {},
-              icon: "user-cog",
-              text: "Account Settings"
+              icon: 'user-cog',
+              text: 'Account Settings'
             },
             {
               onClickFunction: () => setShowModalSignOut(true),
-              icon: "sign-out-alt",
-              text: "Sign Out"
+              icon: 'sign-out-alt',
+              text: 'Sign Out'
             }
           ]}
           deleteMe={() => setShowFloatMenu(false)}
@@ -97,7 +98,11 @@ const Header = props => {
 
 Header.propTypes = {
   dataToSearch: PropTypes.arrayOf(PropTypes.object).isRequired,
-  user: PropTypes.objectOf(PropTypes.string).isRequired
+  currentUser: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
-export default withRouter(Header);
+const mapStateToProps = state => ({
+  currentUser: state.user.currentUser
+});
+
+export default withRouter(connect(mapStateToProps)(Header));
