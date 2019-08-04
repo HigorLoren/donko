@@ -2,18 +2,24 @@ import React from 'react';
 import { createPortal } from 'react-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { setCurrentUser } from '../../redux/user/user.actions';
 import useForm from '../../hooks/useForm/useForm';
+import Auth from '../../Auth';
 
 const SignIn = props => {
+  if (Auth.isUserAuthenticated()) {
+    props.history.push('/');
+  }
+
   const login = userDataForm => {
     // BACKENDPLACEHOLDER:
     // Look for the email and password in DB and retrive a token
+    // If same user from last login in this machine, keep the localstorage with prev info
     console.log('User data in login:', JSON.stringify(userDataForm));
-    console.log(userDataForm.rememberMe);
-    const token = 'usdsfdigsfhd';
+    const token = 'asdsjakfsjkdf';
     // --END--
 
-    localStorage.setItem('token', token);
+    Auth.authenticateUser(token);
     props.history.push('/');
   };
 
@@ -81,4 +87,13 @@ const mapStateToProps = state => ({
   currentUser: state.user.currentUser
 });
 
-export default withRouter(connect(mapStateToProps)(SignIn));
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user))
+});
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(SignIn)
+);

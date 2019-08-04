@@ -17,6 +17,7 @@ import {
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 
+import Auth from './Auth';
 import Routes from './routes';
 
 library.add(
@@ -32,6 +33,10 @@ library.add(
   faSignOutAlt,
   faCog
 );
+
+if (Auth.userHasToken() && !Auth.isUserAuthenticated()) {
+  Auth.authenticateUser(Auth.getToken());
+}
 
 const App = () => <Routes />;
 

@@ -1,33 +1,43 @@
-export default class Auth {
+import store from './redux/store';
+import { setCurrentUser } from './redux/user/user.actions';
+
+class Auth {
   static authenticateUser(token) {
+    // BACKENDPLACEHOLDER:
+    // Go to db and verify token and ip
+    const currentUserImage =
+      'https://propertymarketersllc.com/wp-content/uploads/2018/05/profile-picture-placeholder.png';
+    const currentUserName = 'Logged';
+    // --END--
+
+    store.dispatch(
+      setCurrentUser({
+        name: currentUserName,
+        image: currentUserImage
+      })
+    );
+
     localStorage.setItem('token', token);
   }
 
-  static authNotified() {
-    localStorage.setItem('authNotified', true);
-  }
-
-  static getAuthNotified() {
-    localStorage.getItem('authNotified');
-  }
-
-  static storeReferer(path) {
-    localStorage.setItem('referer', path);
-  }
-
-  static getReferer() {
-    localStorage.getItem('referer');
-  }
-
   static isUserAuthenticated() {
+    return (
+      store.getState().user.currentUser.name !== null && localStorage.getItem('token') !== null
+    );
+  }
+
+  static userHasToken() {
     return localStorage.getItem('token') !== null;
   }
 
   static deauthenticateUser() {
+    store.dispatch(setCurrentUser({ name: null, image: null }));
     localStorage.removeItem('token');
   }
 
   static getToken() {
-    localStorage.getItem('token');
+    return localStorage.getItem('token');
   }
 }
+
+export default Auth;

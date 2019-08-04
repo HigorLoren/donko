@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import { connect } from 'react-redux';
+import Auth from '../../Auth';
 import Modal from '../Modal/Modal';
 import FloatMenu from '../UI/FloatMenu/FloatMenu';
 import logo from '../../assets/donko-logo.png';
@@ -14,9 +15,8 @@ const Header = props => {
   const [showFloatMenu, setShowFloatMenu] = useState(false);
   const [showModalSignOut, setShowModalSignOut] = useState(false);
 
-  // TODO: Handle Log Out
   const handleLogOut = () => {
-    localStorage.clear();
+    Auth.deauthenticateUser();
     props.history.push('/login');
   };
 
