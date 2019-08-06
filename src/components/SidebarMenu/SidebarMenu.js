@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { withRouter } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import boardIcon from "../../assets/board.svg";
-import FloatMenu from "../UI/FloatMenu/FloatMenu";
-import classes from "./SidebarMenu.module.css";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import boardIcon from '../../assets/board.svg';
+import FloatMenu from '../UI/FloatMenu/FloatMenu';
+import classes from './SidebarMenu.module.css';
 
 const SidebarMenu = props => {
   const [showFloatMenu, changeShowFloatMenu] = useState(false);
 
   return (
-    <div className={`${classes.SidebarMenu} ph0 fl w3-5 flex flex-wrap flex-column`}>
+    <div className={`${classes.SidebarMenu} ph0 fl flex flex-wrap flex-column`}>
       {props.boards.map(board => {
         return (
           <button
@@ -18,7 +18,7 @@ const SidebarMenu = props => {
             type="button"
             onClick={() => props.boardClicked(board)}
             className={`${classes.BoardOption} tc w-100 ${
-              props.boardSelected === board.id ? classes.BoardOptionSelected : "pointer"
+              props.boardSelected === board.id ? classes.BoardOptionSelected : 'pointer'
             }`}
           >
             <img src={boardIcon} alt="board Icon" className={classes.BoardIcon} />
@@ -33,7 +33,7 @@ const SidebarMenu = props => {
       </div>
       <div
         className={`${classes.SettingsMenuOption} tc w-100 relative`}
-        style={{ marginTop: "auto" }}
+        style={{ marginTop: 'auto' }}
       >
         <button
           className="pointer"
@@ -44,13 +44,13 @@ const SidebarMenu = props => {
         </button>
         {showFloatMenu ? (
           <FloatMenu
-            customStyle={{ left: "40%", right: "auto", top: "auto", bottom: "80%" }}
+            customStyle={{ left: '40%', right: 'auto', top: 'auto', bottom: '80%' }}
             buttons={[
               {
                 // eslint-disable-next-line react/prop-types
-                onClickFunction: () => props.history.push("/settings"),
-                icon: "",
-                text: "Settings"
+                onClickFunction: () => props.history.push('/settings'),
+                icon: '',
+                text: 'Settings'
               }
             ]}
             deleteMe={() => changeShowFloatMenu(false)}

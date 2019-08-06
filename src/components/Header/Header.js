@@ -48,7 +48,7 @@ const Header = props => {
 
   return (
     <header className={`${classes.Header} relative flex items-center nowrap`}>
-      <div className={`${classes.LogoDiv} w3-5`}>
+      <div className={`${classes.LogoDiv}`}>
         <img src={logo} alt="Logo Donko - A Simple kanban To Do" className={classes.Logo} />
       </div>
       <div className={classes.SpacerHeader} />

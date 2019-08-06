@@ -1,11 +1,12 @@
 .SidebarMenu {
+  width: 5.6rem;
   height: auto;
   background-color: #fff;
   border-radius: 0 0 0 5px;
 }
 
 .BoardIcon {
-  width: 35px;
+  width: 27px;
   height: auto;
 }
 

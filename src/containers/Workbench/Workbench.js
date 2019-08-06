@@ -5,6 +5,7 @@ import Header from '../../components/Header/Header';
 import SidebarMenu from '../../components/SidebarMenu/SidebarMenu';
 import Modal from '../../components/Modal/Modal';
 import Board from '../../components/Board/Board';
+import classes from './Workbench.module.css';
 
 class Workbench extends Component {
   constructor(props) {
@@ -152,7 +153,7 @@ class Workbench extends Component {
       <React.Fragment>
         {modal}
         <Header dataToSearch={this.state.boards} />
-        <div className="flex" style={{ minHeight: 'calc(100vh - 132px)', overflow: 'auto' }}>
+        <div className={classes.Workbench}>
           <SidebarMenu
             boardClicked={this.handleSidebarItemChange}
             boardSelected={this.state.openedBoard.id}
