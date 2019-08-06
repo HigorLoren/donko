@@ -6,7 +6,7 @@ import { setCurrentUser } from '../../redux/user/user.actions';
 import useForm from '../../hooks/useForm/useForm';
 import Auth from '../../Auth';
 
-const SignIn = props => {
+const Login = props => {
   if (Auth.isUserAuthenticated()) {
     props.history.push('/');
   }
@@ -19,7 +19,7 @@ const SignIn = props => {
     const token = 'asdsjakfsjkdf';
     // --END--
 
-    Auth.authenticateUser(token);
+    Auth.authenticateUser(token, userDataForm.rememberMe);
     props.history.push('/');
   };
 
@@ -95,5 +95,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(SignIn)
+  )(Login)
 );
