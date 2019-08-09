@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { setCurrentUser } from '../../redux/user/user.actions';
 import useForm from '../../hooks/useForm/useForm';
-import Auth from '../../Auth';
+import Auth from '../../auth';
 
 const Login = props => {
   if (Auth.isUserAuthenticated()) {

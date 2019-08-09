@@ -17,7 +17,7 @@ import {
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 
-import Auth from './Auth';
+import Auth from './auth';
 import Routes from './routes';
 
 library.add(

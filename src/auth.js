@@ -20,14 +20,14 @@ class Auth {
   }
 
   static isUserAuthenticated() {
-    return (
-      store.getState().user.currentUser.name !== null &&
-      (localStorage.getItem('token') !== null || sessionStorage.getItem('token') !== null)
+    return Boolean(
+      store.getState().user.currentUser.name &&
+        (localStorage.getItem('token') || sessionStorage.getItem('token'))
     );
   }
 
   static userHasToken() {
-    return localStorage.getItem('token') !== null || sessionStorage.getItem('token') !== null;
+    return Boolean(localStorage.getItem('token') || sessionStorage.getItem('token'));
   }
 
   static deauthenticateUser() {

@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import { connect } from 'react-redux';
-import Auth from '../../Auth';
+import Auth from '../../auth';
 import Modal from '../Modal/Modal';
 import FloatMenu from '../UI/FloatMenu/FloatMenu';
 import logo from '../../assets/donko-logo.png';
