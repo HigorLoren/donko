@@ -2,18 +2,24 @@ import store from './redux/store';
 import { setCurrentUser } from './redux/user/user.actions';
 
 class Auth {
-  static authenticateUser(token, remember) {
+  static authenticateUser(remember = true, token) {
+    if (!token) {
+      token = Auth.getLocalToken() || Auth.getDatabaseToken();
+    }
+
     // BACKENDPLACEHOLDER:
     // Go to db and verify token and ip
-    const currentUserImage =
-      'https://propertymarketersllc.com/wp-content/uploads/2018/05/profile-picture-placeholder.png';
-    const currentUserName = 'Logged';
+    const userDB = {
+      name: 'Logged',
+      image:
+        'https://propertymarketersllc.com/wp-content/uploads/2018/05/profile-picture-placeholder.png'
+    };
     // --END--
 
     store.dispatch(
       setCurrentUser({
-        name: currentUserName,
-        image: currentUserImage
+        name: userDB.name,
+        image: userDB.image
       })
     );
     remember ? localStorage.setItem('token', token) : sessionStorage.setItem('token', token);
@@ -36,8 +42,24 @@ class Auth {
     sessionStorage.removeItem('token');
   }
 
-  static getToken() {
+  static getLocalToken() {
     return localStorage.getItem('token') || sessionStorage.getItem('token');
+  }
+
+  static getDatabaseToken() {
+    // BACKENDPLACEHOLDER:
+    const token = 'asdjashdassd';
+    // --END--
+
+    return token;
+  }
+
+  static createUser(userInfoFromInput) {
+    // BACKENDPLACEHOLDER:
+    console.log('User created in DB');
+    // --END--
+
+    return true;
   }
 }
 
