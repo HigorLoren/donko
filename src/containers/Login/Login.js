@@ -1,7 +1,7 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { setCurrentUser } from '../../redux/user/user.actions';
 import useForm from '../../hooks/useForm/useForm';
 import Auth from '../../auth';
@@ -67,14 +67,14 @@ const Login = props => {
         </div>
         <div className="lh-copy mt4 flex">
           <div className="w-50">
-            <a href="#0" className="f6 dim mid-gray">
+            <Link to="/register" className="f6 dim mid-gray">
               Sign Up
-            </a>
+            </Link>
           </div>
           <div className="w-50 tr">
-            <a href="#0" className="f6 dim mid-gray">
+            <Link to="/forgot-password" className="f6 dim mid-gray">
               Forgot your password?
-            </a>
+            </Link>
           </div>
         </div>
       </form>
