@@ -35,7 +35,7 @@ library.add(
 );
 
 if (Auth.userHasToken() && !Auth.isUserAuthenticated()) {
-  Auth.authenticateUser(Auth.getToken());
+  Auth.authenticateUser(Auth.getLocalToken());
 }
 
 const App = () => <Routes />;

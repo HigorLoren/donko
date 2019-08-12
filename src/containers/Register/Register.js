@@ -1,19 +1,14 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import useForm from '../../hooks/useForm/useForm';
+import Auth from '../../auth';
 
 const SignUp = props => {
   const login = userDataForm => {
-    // BACKENDPLACEHOLDER:
-    // Save email and password in DB and retrive a token
-    console.log('User data in signup:', JSON.stringify(userDataForm));
-    console.log(userDataForm.rememberMe);
-    const token = 'usdsfdigsfhd';
-    // --END--
-
-    localStorage.setItem('token', token);
-    props.history.push('/');
+    if (Auth.authenticateUser(userDataForm.rememberMe)) {
+      props.history.push('/');
+    }
   };
 
   const { handleChange, handleSubmit } = useForm(login);
@@ -44,6 +39,15 @@ const SignUp = props => {
               id="password"
               required
             />
+            <input
+              className="pv2 ph3 input-reset bw0 bg-black-05 br2 w-100 lh-copy"
+              type="password"
+              name="testPassword"
+              placeholder="Confirm the Password"
+              onChange={handleChange}
+              id="testPassword"
+              required
+            />
           </div>
           <label className="pa0 ma0 lh-copy f6 pointer">
             <input type="checkbox" name="rememberMe" onChange={handleChange} />
@@ -60,14 +64,14 @@ const SignUp = props => {
         </div>
         <div className="lh-copy mt4 flex">
           <div className="w-50">
-            <a href="#0" className="f6 dim mid-gray">
+            <Link to="/login" className="f6 dim mid-gray">
               Sign Up
-            </a>
+            </Link>
           </div>
           <div className="w-50 tr">
-            <a href="#0" className="f6 dim mid-gray">
+            <Link to="/forgot-password" className="f6 dim mid-gray">
               Forgot your password?
-            </a>
+            </Link>
           </div>
         </div>
       </form>
