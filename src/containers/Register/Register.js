@@ -21,6 +21,17 @@ const SignUp = props => {
           <div className="mt4">
             <input
               className="pv2 ph3 input-reset bw0 bg-black-05 br2 w-100 lh-copy"
+              type="text"
+              name="username"
+              placeholder="Username"
+              onChange={handleChange}
+              id="username"
+              required
+            />
+          </div>
+          <div className="mv3">
+            <input
+              className="pv2 ph3 input-reset bw0 bg-black-05 br2 w-100 lh-copy"
               type="email"
               name="emailAddress"
               placeholder="Email"
@@ -40,7 +51,7 @@ const SignUp = props => {
               required
             />
             <input
-              className="pv2 ph3 input-reset bw0 bg-black-05 br2 w-100 lh-copy"
+              className="pv2 mt1 ph3 input-reset bw0 bg-black-05 br2 w-100 lh-copy"
               type="password"
               name="testPassword"
               placeholder="Confirm the Password"
@@ -49,23 +60,19 @@ const SignUp = props => {
               required
             />
           </div>
-          <label className="pa0 ma0 lh-copy f6 pointer">
-            <input type="checkbox" name="rememberMe" onChange={handleChange} />
-            <span> Remember me</span>
-          </label>
         </fieldset>
         <div className="">
           <input
             className="ph3 fw5 b--moon-gray br2 w-100 mid-gray pv2 input-reset ba bg-transparent hover-bg-light-gray bg-animate pointer f5 dib"
             type="submit"
             onChange={handleChange}
-            value="Sign in"
+            value="Sign up"
           />
         </div>
         <div className="lh-copy mt4 flex">
           <div className="w-50">
             <Link to="/login" className="f6 dim mid-gray">
-              Sign Up
+              Already have an account?
             </Link>
           </div>
           <div className="w-50 tr">

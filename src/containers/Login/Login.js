@@ -65,7 +65,7 @@ const Login = props => {
         <div className="lh-copy mt4 flex">
           <div className="w-50">
             <Link to="/register" className="f6 dim mid-gray">
-              Sign Up
+              Register
             </Link>
           </div>
           <div className="w-50 tr">

@@ -1,5 +1,6 @@
 import store from './redux/store';
 import { setCurrentUser } from './redux/user/user.actions';
+import ProfilePic from './assets/profile_pic_placeholder.png';
 
 class Auth {
   static authenticateUser(remember = true, token) {
@@ -11,8 +12,7 @@ class Auth {
     // Go to db and verify token and ip
     const userDB = {
       name: 'Logged',
-      image:
-        'https://propertymarketersllc.com/wp-content/uploads/2018/05/profile-picture-placeholder.png'
+      image: ProfilePic
     };
     // --END--
 
@@ -23,6 +23,8 @@ class Auth {
       })
     );
     remember ? localStorage.setItem('token', token) : sessionStorage.setItem('token', token);
+
+    return true;
   }
 
   static isUserAuthenticated() {
