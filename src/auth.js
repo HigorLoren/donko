@@ -1,18 +1,18 @@
 import store from './redux/store';
 import { setCurrentUser } from './redux/user/user.actions';
-import ProfilePic from './assets/profile_pic_placeholder.png';
+import defaultProfilePic from './assets/profile_pic_placeholder.png';
 
 class Auth {
   static authenticateUser(remember = true, token) {
     if (!token) {
-      token = Auth.getLocalToken() || Auth.getDatabaseToken();
+      token = Auth.getLocalToken() || Auth.createNewToken();
     }
 
     // BACKENDPLACEHOLDER:
     // Go to db and verify token and ip
     const userDB = {
       name: 'Logged',
-      image: ProfilePic
+      image: defaultProfilePic
     };
     // --END--
 
@@ -22,6 +22,7 @@ class Auth {
         image: userDB.image
       })
     );
+
     remember ? localStorage.setItem('token', token) : sessionStorage.setItem('token', token);
 
     return true;
@@ -48,7 +49,7 @@ class Auth {
     return localStorage.getItem('token') || sessionStorage.getItem('token');
   }
 
-  static getDatabaseToken() {
+  static createNewToken() {
     // BACKENDPLACEHOLDER:
     const token = 'asdjashdassd';
     // --END--
@@ -58,10 +59,11 @@ class Auth {
 
   static createUser(userInfoFromInput) {
     // BACKENDPLACEHOLDER:
-    console.log('User created in DB');
+    console.log('User created in DB and new token generated');
+    const token = 'asdjashdassd';
     // --END--
 
-    return true;
+    return token;
   }
 }
 

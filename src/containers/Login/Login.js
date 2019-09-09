@@ -12,12 +12,7 @@ const Login = props => {
   }
 
   const login = userDataForm => {
-    if (Auth.authenticateUser(userDataForm.rememberMe)) {
-      props.history.push('/');
-    } else {
-      // FIXME: Criar tratamentos de errors
-      console.error('Erro no form');
-    }
+    Auth.authenticateUser(userDataForm.rememberMe) && props.history.push('/');
   };
 
   const { handleChange, handleSubmit } = useForm(login);

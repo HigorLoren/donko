@@ -1,0 +1,8 @@
+.AlertBoxDanger {
+  background-color: #ff8f8f;
+  display: block;
+}
+
+.AlertBox {
+  transition: all 1s ease-in;
+}
