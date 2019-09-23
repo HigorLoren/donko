@@ -14,8 +14,12 @@ const SignUp = props => {
 
   const setAlertBoxTimeout = (value, timeToDisplay) => {
     setAlertBox(value);
+
+    // Cleaning the messages
     setTimeout(() => {
+      // First hide with changing the type
       setAlertBox(old => ({ type: undefined, error: old.error }));
+      // Second wait until disappear and clear the error text
       setTimeout(() => setAlertBox({ type: undefined, error: '' }), 1010);
     }, timeToDisplay);
   };
@@ -23,7 +27,7 @@ const SignUp = props => {
   const validateForm = userDataForm => {
     if (userDataForm.password !== userDataForm.passwordToConfirm) {
       setAlertBoxTimeout(
-        { type: classes.AlertBoxDanger, error: 'As senhas não são iguais.' },
+        { type: classes.AlertBoxDanger, error: 'The passwords must match.' },
         5000
       );
       return false;
@@ -31,7 +35,10 @@ const SignUp = props => {
 
     // eslint-disable-next-line no-useless-escape
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(userDataForm.email)) {
-      setAlertBoxTimeout({ type: classes.AlertBoxDanger, error: 'Email não é válido.' }, 5000);
+      setAlertBoxTimeout(
+        { type: classes.AlertBoxDanger, error: 'Must be a valid email address.' },
+        5000
+      );
       return false;
     }
 
@@ -49,7 +56,7 @@ const SignUp = props => {
 
   return createPortal(
     <div className="measure center shadow-5 bg-white br3 pa4 mv3">
-      <form className="" method="POST" onSubmit={handleSubmit}>
+      <form className="" method="POST">
         <fieldset id="register" className="ba b--transparent ph0 mh0">
           <legend className="f2 mb1 fw7 mid-gray ph0 mh0 tc">Register</legend>
           <div className={`mt2 mh3 br2 fw4 f5 white pv2 ph3 ${classes.AlertBox} ${alertBox.type}`}>
@@ -99,12 +106,13 @@ const SignUp = props => {
           </div>
         </fieldset>
         <div className="">
-          <input
+          <button
             className="ph3 fw5 b--moon-gray br2 w-100 mid-gray pv2 input-reset ba bg-transparent hover-bg-light-gray bg-animate pointer f5 dib"
-            type="submit"
-            onChange={handleChange}
-            value="Sign up"
-          />
+            type="button"
+            onClick={handleSubmit}
+          >
+            Sign up
+          </button>
         </div>
         <div className="lh-copy mt4 flex">
           <div className="w-50">
