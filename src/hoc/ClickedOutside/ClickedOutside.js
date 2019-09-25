@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class ClickedOutside extends Component {
   componentDidMount() {
-    document.addEventListener("mousedown", this.handleClickOutside);
+    document.addEventListener('mousedown', this.handleClickOutside);
   }
 
   componentWillUnmount() {
-    document.removeEventListener("mousedown", this.handleClickOutside);
+    document.removeEventListener('mousedown', this.handleClickOutside);
   }
 
   handleClickOutside = event => {
@@ -21,7 +21,7 @@ export default class ClickedOutside extends Component {
     // In this piece of code I'm trying to get to the first not functional component
     // Because it wouldn't work if use a functional component (like <Fade/> from react-reveal)
     let firstNotFunctionalComponent = this.props.children;
-    while (typeof firstNotFunctionalComponent.type === "function") {
+    while (typeof firstNotFunctionalComponent.type === 'function') {
       firstNotFunctionalComponent = firstNotFunctionalComponent.props.children;
     }
 

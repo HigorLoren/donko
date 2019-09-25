@@ -3,6 +3,7 @@
   height: auto;
   background-color: #fff;
   border-radius: 0 0 0 5px;
+  overflow-x: hidden;
 }
 
 .BoardIcon {
@@ -13,6 +14,7 @@
 .BoardOption {
   padding: 14px 0;
   margin: 0 0 10px 0;
+  position: relative;
 }
 
 .BoardOption:first-of-type {
@@ -28,6 +30,19 @@
   opacity: 0.7;
   transition: opacity 0.12s ease-in-out;
   color: rgb(248, 248, 248);
+}
+
+.DeleteBoardButton {
+  position: absolute;
+  bottom: 0;
+  left: 100%;
+  right: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  transition: left 0.3s ease;
+  background-color: rgb(255, 195, 195);
+  box-shadow: inset -3px 0px 4px -4px rgba(0, 0, 0, 0.38);
 }
 
 .SettingsMenuOption {

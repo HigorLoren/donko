@@ -74,6 +74,23 @@ class Workbench extends Component {
     this.handleSidebarItemChange(newBoard);
   };
 
+  handleDeleteBoard = boardToDelete => {
+    // BACKENDPLACEHOLDER:
+    const updatedBoards = this.state.boards.filter(board => board.id !== boardToDelete.id);
+    // --END--
+
+    console.log(boardToDelete);
+
+    this.setState(prevState => ({
+      boards: updatedBoards,
+      openedBoard: {
+        id: null,
+        name: '',
+        cards: []
+      }
+    }));
+  };
+
   // Handle Cards
   handleNewCard = newCard => {
     // BACKENDPLACEHOLDER:
@@ -113,7 +130,6 @@ class Workbench extends Component {
       }
     }));
   };
-  // End Handle CARDS
 
   render() {
     let modal = null;
@@ -157,6 +173,7 @@ class Workbench extends Component {
           <SidebarMenu
             boardClicked={this.handleSidebarItemChange}
             boardSelected={this.state.openedBoard.id}
+            handleDeleteBoard={this.handleDeleteBoard}
             boards={this.state.boards}
             newBoard={() => this.setState({ newBoardModalShow: true })}
           />
