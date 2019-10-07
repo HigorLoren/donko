@@ -26,21 +26,35 @@ const SidebarMenu = props => {
     />
   ) : null;
 
-  let clicked = false;
+  let showDelete = false;
+
+  const handleMouseLeaveBoardOption = (event, board) => {
+    if (showDelete === true) {
+      showDelete = false;
+      console.log(`Leave  id: ${Math.round(Math.random() * 100)}`);
+    }
+  };
 
   const handleMouseUpBoardOption = (event, board) => {
-    if (clicked) {
+    if (showDelete) {
       props.boardClicked(board);
     }
-    clicked = false;
+    showDelete = false;
   };
 
   const handleMouseDownBoardOption = (event, board) => {
-    clicked = true;
+    event.preventDefault();
+
+    showDelete = true;
+
+    document.getElementById(`boardOption_${board.id}`).addEventListener('mouseleave', () => {
+      showDelete = false;
+    });
+
     setTimeout(() => {
-      if (clicked === true) {
+      if (showDelete === true) {
         document.getElementById(`boardOption_${board.id}`).style.left = 0;
-        clicked = false;
+        showDelete = false;
       }
     }, 500);
   };
@@ -49,12 +63,13 @@ const SidebarMenu = props => {
     <div className={`${classes.SidebarMenu} ph0 fl flex flex-wrap flex-column`}>
       {props.boards.map(board => {
         return (
-          <div key={`boardOption_${board.id}`} className={`${classes.BoardOption}`}>
+          <div key={`boardOption_${board.id}`} className={`${classes.BoardOption} noselect`}>
             <button
               key={board.id}
               type="button"
               onMouseUp={e => handleMouseUpBoardOption(e, board)}
               onMouseDown={e => handleMouseDownBoardOption(e, board)}
+              onMouseLeave={e => handleMouseLeaveBoardOption(e, board)}
               className={`tc w-100 ${
                 props.boardSelected === board.id ? classes.BoardOptionSelected : 'pointer'
               }`}

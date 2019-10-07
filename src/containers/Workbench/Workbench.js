@@ -79,6 +79,8 @@ class Workbench extends Component {
     const updatedBoards = this.state.boards.filter(board => board.id !== boardToDelete.id);
     // --END--
 
+    document.title = 'Donko - Kanban Web App';
+
     console.log(boardToDelete);
 
     this.setState(prevState => ({

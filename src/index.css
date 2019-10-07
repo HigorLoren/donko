@@ -90,3 +90,8 @@ button:focus {
   opacity: 100;
   box-shadow: 0 0 1px 3px rgba(109, 109, 249, 0.38);
 }
+
+.noselect {
+  -ms-user-select: none;
+  user-select: none;
+}
