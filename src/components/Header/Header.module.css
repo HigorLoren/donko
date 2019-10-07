@@ -1,11 +1,17 @@
 .Header {
   background-color: #fff;
-  border-radius: 5px 5px 0px 0px;
-  padding: 0 19px;
+  padding: 0 14px;
   box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.05);
 }
 
+@media (min-width: 1366.1px) {
+  .Header {
+    border-radius: 5px 5px 0px 0px;
+    padding: 0 19px;
+  }
+}
 .LogoDiv {
+  width: 5.3rem;
   margin: 10px 0px;
 }
 
@@ -32,12 +38,12 @@
 }
 
 .ProfileImageIcon {
-  border: solid 1.5px #e9e9e9;
+  max-width: 46px;
 }
 
 .Header > * {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .Header .UserMenu:active {

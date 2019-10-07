@@ -1,0 +1,11 @@
+.Workbench {
+  min-height: calc(100vh - 69.09px);
+  overflow: auto;
+  display: flex;
+}
+
+@media (min-width: 1366.1px) {
+  .Workbench {
+    min-height: calc(100vh - 132px);
+  }
+}
