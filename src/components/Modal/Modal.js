@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Fade } from "react-reveal";
-import classes from "./Modal.module.css";
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Fade } from 'react-reveal';
+import classes from './Modal.module.css';
 
 const Modal = props => {
   const [showModal, setShowModal] = useState(false);
@@ -16,10 +16,10 @@ const Modal = props => {
   };
 
   useEffect(() => {
-    document.body.classList.add("modal-open");
+    document.body.classList.add('modal-open');
     handleShowModal();
     return () => {
-      document.body.classList.remove("modal-open");
+      document.body.classList.remove('modal-open');
     };
   }, []);
 
@@ -36,9 +36,7 @@ const Modal = props => {
         />
         <div className={`${classes.ModalDialog} flex w-auto relative items-center`} role="document">
           <div
-            className={`${
-              classes.ModalContent
-            } pv3 br2 shadow-5 relative flex flex-column w-100 bg-white`}
+            className={`${classes.ModalContent} pv3 br2 shadow-5 relative flex flex-column w-100 bg-white`}
           >
             <div className="ph3 flex justify-between">
               <h4 className="mt0 mb2 f4 mid-gray">{props.title}</h4>
@@ -51,7 +49,7 @@ const Modal = props => {
               </button>
             </div>
             <div className="pa3">{props.children}</div>
-            {props.footer ? <div className="flex ph3 justify-end">{props.footer}</div> : ""}
+            {props.footer ? <div className="flex ph3 justify-end">{props.footer}</div> : ''}
           </div>
         </div>
       </div>
@@ -68,7 +66,7 @@ Modal.propTypes = {
 
 Modal.defaultProps = {
   callbackCloseModal: () => null,
-  title: "",
+  title: '',
   children: null,
   footer: null
 };

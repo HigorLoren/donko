@@ -73,6 +73,10 @@ button:focus {
   background-color: rgba(0, 0, 0, 0.03);
 }
 
+.bg-black-07 {
+  background-color: rgba(0, 0, 0, 0.07);
+}
+
 .badge {
   display: inline-block;
   padding: 0.25em 0.4em;

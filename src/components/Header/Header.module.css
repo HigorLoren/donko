@@ -4,12 +4,6 @@
   box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.05);
 }
 
-@media (min-width: 1366.1px) {
-  .Header {
-    border-radius: 5px 5px 0px 0px;
-    padding: 0 19px;
-  }
-}
 .LogoDiv {
   width: 5.3rem;
   margin: 10px 0px;
@@ -49,4 +43,40 @@
 .Header .UserMenu:active {
   opacity: 0.5;
   transition: opacity 0.15s ease-in;
+}
+
+@media (min-width: 1366.1px) {
+  .Header {
+    border-radius: 5px 5px 0px 0px;
+    padding: 0 19px;
+  }
+}
+
+@media (max-width: 510px) {
+  .LogoDiv {
+    width: 4.6rem;
+    margin-right: 5px;
+  }
+  .Header > * {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .Logo {
+    width: 35px;
+  }
+  .ProfileImageIcon {
+    max-width: 27px;
+  }
+}
+
+@media (max-width: 380px) {
+  .LogoDiv {
+    width: auto;
+  }
+  .FirstSpacerHeader {
+    display: none;
+  }
+  .UserMenu {
+    margin-left: auto;
+  }
 }

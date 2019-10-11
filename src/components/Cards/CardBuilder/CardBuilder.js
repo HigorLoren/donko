@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import classes from './CardBuilder.module.css';
 
-const newCardDashColor = "#636363";
+const newCardDashColor = '#636363';
 
 const CardBuilder = props => {
-  const [textInputNameCard, setTextInputNameCard] = useState("New Name");
+  const [textInputNameCard, setTextInputNameCard] = useState('New Name');
   const [initial, setInitial] = useState(true);
 
   useEffect(() => {
@@ -15,19 +16,19 @@ const CardBuilder = props => {
   }, [props, initial]);
 
   const handleLeaveInputNameCard = () => {
-    setTextInputNameCard("New Name");
+    setTextInputNameCard('New Name');
     setInitial(true);
     props.newCard({ name: textInputNameCard, dashColor: newCardDashColor });
   };
 
   const handleKeyDown = event => {
-    if (event.key === "Enter") {
+    if (event.key === 'Enter') {
       handleLeaveInputNameCard();
     }
   };
 
   return initial ? (
-    <div className="w-25 flex" style={{ minWidth: "300px", minHeight: "270px" }}>
+    <div className={classes.CardBuilder}>
       <div
         onClick={() => setInitial(false)}
         className="mh3 br3 w-100 pa3 black-05 bg-black-03 flex justify-center items-center dim pointer"
@@ -37,20 +38,17 @@ const CardBuilder = props => {
     </div>
   ) : (
     <div id="newCard">
-      <div
-        className="w-25 mh3 pb2 br3 shadow-6 relative"
-        style={{ minWidth: "300px", backgroundColor: "#f7f8f9" }}
-      >
+      <div className={`mh3 pb2 br3 shadow-6 relative ${classes.NewCard}`}>
         <div
           style={{
             background: newCardDashColor,
-            borderRadius: "0.5rem 0.5rem 0 0",
-            height: "5px",
-            width: "100%"
+            borderRadius: '0.5rem 0.5rem 0 0',
+            height: '5px',
+            width: '100%'
           }}
         />
         <div className="ph3">
-          <div className="flex mt3 mb4 justify-between items-center relative">
+          <div className="flex mt3 mb3 mb4-m justify-between items-center relative">
             <input
               type="text"
               autoFocus
@@ -78,7 +76,7 @@ const CardBuilder = props => {
                 className="lh-copy w2-5 pointer ba br2 shadow-6 bg-moon-gray white ml1 b--light-gray dim"
                 type="button"
               >
-                <FontAwesomeIcon icon="plus" className="" style={{ width: ".575em" }} />
+                <FontAwesomeIcon icon="plus" className="" style={{ width: '.575em' }} />
               </button>
             </div>
           </form>

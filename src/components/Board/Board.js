@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Cards from "../Cards/Cards";
-import classes from "./Board.module.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Cards from '../Cards/Cards';
+import classes from './Board.module.css';
 
 const Board = props => {
   // @ Scroll to the right until get to the end
@@ -9,16 +9,19 @@ const Board = props => {
     let lastScroll;
 
     const slideToRightInterval = setInterval(() => {
-      document.getElementById("cardsZone").scrollLeft += 10;
-      if (lastScroll === document.getElementById("cardsZone").scrollLeft) {
+      document.getElementById('cardsZone').scrollLeft += 10;
+      if (lastScroll === document.getElementById('cardsZone').scrollLeft) {
         window.clearInterval(slideToRightInterval);
       }
-      lastScroll = document.getElementById("cardsZone").scrollLeft;
+      lastScroll = document.getElementById('cardsZone').scrollLeft;
     }, 25);
   };
 
   return (
-    <div id="cardsZone" className={`${classes.Board} fl pa4 w-100 overflow-auto items-start flex`}>
+    <div
+      id="cardsZone"
+      className={`${classes.Board} fl pv3 pa4-m w-100 overflow-auto items-start flex`}
+    >
       {props.cards.length > 0 ? (
         <Cards
           cards={props.cards}

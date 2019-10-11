@@ -51,7 +51,7 @@ const Header = props => {
       <div className={`${classes.LogoDiv}`}>
         <img src={logo} alt="Logo Donko - A Simple kanban To Do" className={classes.Logo} />
       </div>
-      <div className={classes.SpacerHeader} />
+      <div className={`${classes.FirstSpacerHeader} ${classes.SpacerHeader}`} />
       <SearchBar customStyle="mh3 w-100" boardsToSearch={props.dataToSearch} />
       {/* TODO: Add Notifications */}
       {/* <a href="#" className="link mr3">
@@ -59,9 +59,7 @@ const Header = props => {
       </a> */}
       <div className={classes.SpacerHeader} />
       <button
-        className={`${
-          classes.UserMenu
-        } ml2 pl3 pr0 dark-gray fw5 dim pointer flex items-center mid-gray`}
+        className={`${classes.UserMenu} ml2 pl3 pr0 dark-gray fw5 dim pointer flex items-center mid-gray`}
         onClick={() => setShowFloatMenu(prevState => !prevState)}
         type="button"
       >

@@ -1,29 +1,29 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import { createPortal } from "react-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { TwitterPicker } from "react-color";
-import Modal from "../../Modal/Modal";
-import FloatMenu from "../../UI/FloatMenu/FloatMenu";
-import Notes from "./Notes/Notes";
-import classes from "./Card.module.css";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import { createPortal } from 'react-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { TwitterPicker } from 'react-color';
+import Modal from '../../Modal/Modal';
+import FloatMenu from '../../UI/FloatMenu/FloatMenu';
+import Notes from './Notes/Notes';
+import classes from './Card.module.css';
 
 const colorsPicker = [
-  "#f1c96f",
-  "#f76e6e",
-  "#8086ca",
-  "#72f1b7",
-  "#000000",
-  "#FF6900",
-  "#FCB900",
-  "#7BDCB5",
-  "#00D084",
-  "#8ED1FC",
-  "#0693E3",
-  "#ABB8C3",
-  "#EB144C",
-  "#F78DA7",
-  "#9900EF"
+  '#f1c96f',
+  '#f76e6e',
+  '#8086ca',
+  '#72f1b7',
+  '#000000',
+  '#FF6900',
+  '#FCB900',
+  '#7BDCB5',
+  '#00D084',
+  '#8ED1FC',
+  '#0693E3',
+  '#ABB8C3',
+  '#EB144C',
+  '#F78DA7',
+  '#9900EF'
 ];
 
 export default class Card extends PureComponent {
@@ -37,7 +37,7 @@ export default class Card extends PureComponent {
       renameCardModalShow: false,
       deleteCardModalShow: false,
       showFloatMenu: false,
-      todo: "",
+      todo: '',
       notes: this.props.notes
     };
   }
@@ -59,7 +59,7 @@ export default class Card extends PureComponent {
     // --END--
     this.setState(prevState => ({
       notes: updatedNotes,
-      todo: ""
+      todo: ''
     }));
   };
 
@@ -78,7 +78,7 @@ export default class Card extends PureComponent {
     event.preventDefault();
     // BACKENDPLACEHOLDER:
     // eslint-disable-next-line react/no-access-state-in-setstate
-    const updatedCardName = this.state.inputRenameCard || ".";
+    const updatedCardName = this.state.inputRenameCard || '.';
     // --END--
     this.setState({ cardName: updatedCardName, renameCardModalShow: false });
   };
@@ -148,7 +148,7 @@ export default class Card extends PureComponent {
     }
 
     return (
-      <div className={`${classes.Card} w-25 mh3 br3 shadow-6 relative`}>
+      <div className={`${classes.Card} mh3 br3 shadow-6 relative`}>
         {this.state.dashColorChangePickerShow ? (
           <React.Fragment>
             <div
@@ -179,8 +179,8 @@ export default class Card extends PureComponent {
           <div className={classes.DashColorCard} style={{ background: this.state.dashColor }} />
         )}
         <div className="ph3">
-          <div className="flex mt3 mb4 justify-between items-center relative">
-            <h5 className="f4 gray ma0 fw5">{this.state.cardName}</h5>
+          <div className="flex mt3 mb3 mb4-m justify-between items-center relative">
+            <h5 className="f5 f4-m gray ma0 fw5">{this.state.cardName}</h5>
             <button
               className="button-reset pointer gray hover-mid-gray textshadow-1"
               onClick={() =>
@@ -195,8 +195,8 @@ export default class Card extends PureComponent {
                 buttons={[
                   {
                     onClickFunction: () => this.setState({ dashColorChangePickerShow: true }),
-                    icon: "palette",
-                    text: "Change dash color"
+                    icon: 'palette',
+                    text: 'Change dash color'
                   },
                   {
                     onClickFunction: () =>
@@ -204,13 +204,13 @@ export default class Card extends PureComponent {
                         inputRenameCard: prevState.cardName,
                         renameCardModalShow: true
                       })),
-                    icon: "pen-square",
-                    text: "Rename Card"
+                    icon: 'pen-square',
+                    text: 'Rename Card'
                   },
                   {
                     onClickFunction: () => this.setState({ deleteCardModalShow: true }),
-                    icon: "trash-alt",
-                    text: "Delete Card"
+                    icon: 'trash-alt',
+                    text: 'Delete Card'
                   }
                 ]}
                 deleteMe={() => this.setState({ showFloatMenu: false })}
@@ -239,7 +239,7 @@ export default class Card extends PureComponent {
                 className="lh-copy w2-5 pointer ba br2 shadow-6 bg-moon-gray white ml1 b--light-gray dim"
                 type="button"
               >
-                <FontAwesomeIcon icon="plus" className="" style={{ width: ".575em" }} />
+                <FontAwesomeIcon icon="plus" className="" style={{ width: '.575em' }} />
               </button>
             </div>
           </form>

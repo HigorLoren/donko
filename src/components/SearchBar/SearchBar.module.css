@@ -62,3 +62,24 @@
 .Board {
   background-color: #dc3545;
 }
+
+@media (max-width: 510px) {
+  .SearchInput {
+    font-size: 0.8em;
+    padding: 5px 0 5px 33px;
+  }
+  .SearchIcon {
+    width: 15px;
+  }
+  .SearchInput::-webkit-search-cancel-button {
+    height: 10px;
+    width: 10px;
+    margin: 0 13px 0 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .SearchDiv {
+    display: none;
+  }
+}

@@ -9,3 +9,9 @@
   width: 100%;
   position: absolute;
 }
+
+@media (max-width: 380px) {
+  .Card {
+    min-width: 225px;
+  }
+}

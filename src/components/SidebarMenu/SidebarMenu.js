@@ -36,6 +36,8 @@ const SidebarMenu = props => {
   };
 
   const handleMouseUpBoardOption = (event, board) => {
+    event.preventDefault();
+
     if (showDelete) {
       props.boardClicked(board);
     }
@@ -43,8 +45,6 @@ const SidebarMenu = props => {
   };
 
   const handleMouseDownBoardOption = (event, board) => {
-    event.preventDefault();
-
     showDelete = true;
 
     document.getElementById(`boardOption_${board.id}`).addEventListener('mouseleave', () => {
@@ -68,9 +68,11 @@ const SidebarMenu = props => {
               key={board.id}
               type="button"
               onMouseUp={e => handleMouseUpBoardOption(e, board)}
+              onTouchStart={e => handleMouseDownBoardOption(e, board)}
+              onTouchEnd={e => handleMouseUpBoardOption(e, board)}
               onMouseDown={e => handleMouseDownBoardOption(e, board)}
               onMouseLeave={e => handleMouseLeaveBoardOption(e, board)}
-              className={`tc w-100 ${
+              className={`tc w-100 ${classes.BoardOptionButton} ${
                 props.boardSelected === board.id ? classes.BoardOptionSelected : 'pointer'
               }`}
             >
@@ -96,8 +98,8 @@ const SidebarMenu = props => {
       })}
       {floatMenuBoard}
       <div className={`${classes.AddBoardOption} tc w-100 relative`}>
-        <button className="pointer bg-black-03 ph3 pv2 br2" type="button" onClick={props.newBoard}>
-          <FontAwesomeIcon icon="plus" size="lg" className="black-10" />
+        <button className="pointer bg-black-07 ph3 pv2 br2" type="button" onClick={props.newBoard}>
+          <FontAwesomeIcon icon="plus" size="lg" className="black-20" />
         </button>
       </div>
       <div

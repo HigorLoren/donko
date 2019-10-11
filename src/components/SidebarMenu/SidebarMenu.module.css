@@ -11,10 +11,14 @@
 }
 
 .BoardOption {
-  padding: 14px 0;
   margin: 0 0 10px 0;
   position: relative;
   overflow-x: hidden;
+  width: 100%;
+}
+
+.BoardOption button {
+  padding: 14px 0;
 }
 
 .BoardOption:first-of-type {
@@ -71,4 +75,10 @@
 .BoardOptionSelected {
   border-left: solid 3px #7faff9;
   cursor: unset !important;
+}
+
+@media (max-width: 510px) {
+  .SidebarMenu {
+    width: 5.2rem;
+  }
 }

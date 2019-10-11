@@ -1,0 +1,19 @@
+.CardBuilder {
+  display: flex;
+  min-width: 300px;
+  min-height: 270px;
+}
+
+.NewCard {
+  min-width: 300px;
+  background-color: #f7f8f9;
+}
+
+@media (max-width: 380px) {
+  .CardBuilder {
+    min-width: 225px;
+  }
+  .NewCard {
+    min-width: 225px;
+  }
+}

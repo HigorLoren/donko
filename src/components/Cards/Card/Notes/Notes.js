@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Fade } from "react-reveal";
-import TransitionGroup from "react-transition-group/TransitionGroup";
-import classes from "./Notes.module.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Fade } from 'react-reveal';
+import TransitionGroup from 'react-transition-group/TransitionGroup';
+import classes from './Notes.module.css';
 
 const Notes = props => {
   return (
@@ -11,11 +11,9 @@ const Notes = props => {
       {props.notesArray.map(item => (
         <Fade key={item.id} collapse appear bottom duration={250}>
           <div
-            className={`${
-              classes.Note
-            } bg-white br2 pl3 pr2 mb2 pv2 flex justify-between align-center`}
+            className={`${classes.Note} bg-white br2 pl3 pr2 mb2 pv2 flex justify-between align-center`}
           >
-            <p className="mv1 word-break">{item.text}</p>
+            <p className="mv1 word-break-wrap">{item.text}</p>
             <button
               onClick={() => props.deleteNote(item.id)}
               className={`${classes.DeleteNote} close pointer o-0`}
@@ -24,7 +22,7 @@ const Notes = props => {
               <FontAwesomeIcon
                 icon="times-circle"
                 className="light-silver"
-                style={{ width: ".8em" }}
+                style={{ width: '.8em' }}
               />
             </button>
           </div>

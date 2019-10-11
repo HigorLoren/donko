@@ -2,6 +2,16 @@
   transition: opacity 0.5s ease-in-out;
 }
 
-.Note:hover button.DeleteNote {
-  opacity: 1;
+/* MOBILE */
+@media (hover: none) and (pointer: coarse) {
+  .Note button.DeleteNote {
+    opacity: 1;
+  }
+}
+
+/* DESKTOP */
+@media (hover: hover) and (pointer: fine) {
+  .Note:hover button.DeleteNote {
+    opacity: 1;
+  }
 }

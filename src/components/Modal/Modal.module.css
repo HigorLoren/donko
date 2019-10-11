@@ -1,14 +1,7 @@
-@media (min-width: 576px) {
-  .ModalDialog {
-    min-height: calc(100% - 3.5rem);
-    max-width: 500px;
-    margin: 1.75rem auto;
-  }
-}
-
 .ModalDialog {
   pointer-events: none;
   min-height: calc(100% - 1rem);
+  margin: 0 10px;
 }
 
 .Modal {
@@ -23,4 +16,12 @@
 .BlackOffset {
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
+}
+
+@media (min-width: 576px) {
+  .ModalDialog {
+    min-height: calc(100% - 3.5rem);
+    max-width: 500px;
+    margin: 1.75rem auto;
+  }
 }
