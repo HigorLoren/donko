@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { createPortal } from 'react-dom';
 import Header from '../../components/Header/Header';
 import SidebarMenu from '../../components/SidebarMenu/SidebarMenu';
 import Modal from '../../components/Modal/Modal';
@@ -134,42 +133,35 @@ class Workbench extends Component {
   };
 
   render() {
-    let modal = null;
-
-    if (this.state.newBoardModalShow) {
-      modal = createPortal(
-        <Modal
-          title="New Board"
-          callbackCloseModal={() => this.setState({ newBoardModalShow: false })}
-          footer={
-            <button
-              className="ba br1 mt3 pointer pv1 ph3 b--light-silver dim mid-gray"
-              onClick={this.handleNewBoard}
-              type="button"
-            >
-              Salvar
-            </button>
-          }
-        >
-          <form onSubmit={this.handleNewBoard}>
-            <input
-              type="text"
-              autoFocus
-              className="w-100 br2 ba pv1 b--light-gray pl2 lh-copy"
-              id="inputNewBoardName"
-              placeholder="New board name"
-              onChange={this.handleChange}
-              name="inputNewBoardName"
-            />
-          </form>
-        </Modal>,
-        document.body
-      );
-    }
-
     return (
       <React.Fragment>
-        {modal}
+        {this.state.newBoardModalShow ? (
+          <Modal
+            title="New Board"
+            callbackCloseModal={() => this.setState({ newBoardModalShow: false })}
+            footer={
+              <button
+                className="ba br1 mt3 pointer pv1 ph3 b--light-silver dim mid-gray"
+                onClick={this.handleNewBoard}
+                type="button"
+              >
+                Salvar
+              </button>
+            }
+          >
+            <form onSubmit={this.handleNewBoard}>
+              <input
+                type="text"
+                autoFocus
+                className="w-100 br2 ba pv1 b--light-gray pl2 lh-copy"
+                id="inputNewBoardName"
+                placeholder="New board name"
+                onChange={this.handleChange}
+                name="inputNewBoardName"
+              />
+            </form>
+          </Modal>
+        ) : null}
         <Header dataToSearch={this.state.boards} />
         <div className={classes.Workbench}>
           <SidebarMenu

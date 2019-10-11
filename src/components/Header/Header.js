@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { createPortal } from 'react-dom';
 import { connect } from 'react-redux';
 import Auth from '../../auth';
 import Modal from '../Modal/Modal';
@@ -25,26 +24,6 @@ const Header = props => {
       // TODO: Search TODOS, CARDS and BOARDS
     };
   });
-
-  let modal;
-
-  if (showModalSignOut) {
-    modal = createPortal(
-      <Modal title="Sign Out" callbackCloseModal={() => setShowModalSignOut(false)}>
-        <div className="flex justify-center">
-          <button
-            className="ba br1 btn-visible-focus mt3 pointer pv2 lh-copy ph3 bg-orange b--black-025 dim white"
-            onClick={handleLogOut}
-            autoFocus
-            type="button"
-          >
-            I really want to logout.
-          </button>
-        </div>
-      </Modal>,
-      document.body
-    );
-  }
 
   return (
     <header className={`${classes.Header} relative flex items-center nowrap`}>
@@ -89,7 +68,21 @@ const Header = props => {
           deleteMe={() => setShowFloatMenu(false)}
         />
       ) : null}
-      {modal}
+
+      {showModalSignOut ? (
+        <Modal title="Sign Out" callbackCloseModal={() => setShowModalSignOut(false)}>
+          <div className="flex justify-center">
+            <button
+              className="ba br1 btn-visible-focus mt3 pointer pv2 lh-copy ph3 bg-orange b--black-025 dim white"
+              onClick={handleLogOut}
+              autoFocus
+              type="button"
+            >
+              I really want to logout.
+            </button>
+          </div>
+        </Modal>
+      ) : null}
     </header>
   );
 };

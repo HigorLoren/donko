@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Fade } from 'react-reveal';
@@ -9,6 +10,9 @@ const Modal = props => {
 
   const handleShowModal = () => {
     setShowModal(true);
+    document.addEventListener('keyup', e => {
+      if (e.key === 'Escape') handleCloseModal();
+    });
   };
 
   const handleCloseModal = () => {
@@ -21,9 +25,9 @@ const Modal = props => {
     return () => {
       document.body.classList.remove('modal-open');
     };
-  }, []);
+  });
 
-  return (
+  return createPortal(
     <Fade duration={300} when={showModal}>
       <div
         className={`${classes.Modal} fixed top-0 left-0 w-100 h-100 overflow-hidden outline-0"`}
@@ -53,7 +57,8 @@ const Modal = props => {
           </div>
         </div>
       </div>
-    </Fade>
+    </Fade>,
+    document.body
   );
 };
 

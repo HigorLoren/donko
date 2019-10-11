@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { createPortal } from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { TwitterPicker } from 'react-color';
 import Modal from '../../Modal/Modal';
@@ -92,61 +91,6 @@ export default class Card extends PureComponent {
   };
 
   render() {
-    let modal = null;
-
-    if (this.state.renameCardModalShow) {
-      modal = createPortal(
-        <Modal
-          title="Rename Card"
-          callbackCloseModal={() => this.setState({ renameCardModalShow: false })}
-          footer={
-            <button
-              className="ba br1 mt3 pointer pv1 ph3 b--light-silver dim mid-gray"
-              onClick={this.handleCardRename}
-              type="button"
-            >
-              Salvar
-            </button>
-          }
-        >
-          <form onSubmit={this.handleCardRename}>
-            <input
-              type="text"
-              autoFocus
-              className="w-100 br2 ba pv1 b--light-gray pl2 lh-copy"
-              id="inputRenameCard"
-              placeholder="New name"
-              value={this.state.inputRenameCard}
-              onChange={this.handleChange}
-              name="inputRenameCard"
-            />
-          </form>
-        </Modal>,
-        document.body
-      );
-    }
-
-    if (this.state.deleteCardModalShow) {
-      modal = createPortal(
-        <Modal
-          title="Delete Card"
-          callbackCloseModal={() => this.setState({ deleteCardModalShow: false })}
-        >
-          <div className="flex justify-center">
-            <button
-              className="ba br1 mt3 pointer pv2 lh-copy ph3 bg-red b--black-025 dim btn-visible-focus white"
-              onClick={this.props.deleteMe}
-              autoFocus
-              type="button"
-            >
-              I really want to delete.
-            </button>
-          </div>
-        </Modal>,
-        document.body
-      );
-    }
-
     return (
       <div className={`${classes.Card} mh3 br3 shadow-6 relative`}>
         {this.state.dashColorChangePickerShow ? (
@@ -244,7 +188,53 @@ export default class Card extends PureComponent {
             </div>
           </form>
         </div>
-        {modal}
+
+        {this.state.deleteCardModalShow ? (
+          <Modal
+            title="Delete Card"
+            callbackCloseModal={() => this.setState({ deleteCardModalShow: false })}
+          >
+            <div className="flex justify-center">
+              <button
+                className="ba br1 mt3 pointer pv2 lh-copy ph3 bg-red b--black-025 dim btn-visible-focus white"
+                onClick={this.props.deleteMe}
+                autoFocus
+                type="button"
+              >
+                I really want to delete.
+              </button>
+            </div>
+          </Modal>
+        ) : null}
+
+        {this.state.renameCardModalShow ? (
+          <Modal
+            title="Rename Card"
+            callbackCloseModal={() => this.setState({ renameCardModalShow: false })}
+            footer={
+              <button
+                className="ba br1 mt3 pointer pv1 ph3 b--light-silver dim mid-gray"
+                onClick={this.handleCardRename}
+                type="button"
+              >
+                Salvar
+              </button>
+            }
+          >
+            <form onSubmit={this.handleCardRename}>
+              <input
+                type="text"
+                autoFocus
+                className="w-100 br2 ba pv1 b--light-gray pl2 lh-copy"
+                id="inputRenameCard"
+                placeholder="New name"
+                value={this.state.inputRenameCard}
+                onChange={this.handleChange}
+                name="inputRenameCard"
+              />
+            </form>
+          </Modal>
+        ) : null}
       </div>
     );
   }
