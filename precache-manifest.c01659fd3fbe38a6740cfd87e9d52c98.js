@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9e09426ea447be732c2952f1a1f908d5",
+    "revision": "0dbdc9dbc31150cc5ed9ccb0c69fceee",
     "url": "/donko/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/donko/static/css/2.3c03f26f.chunk.css"
   },
   {
-    "revision": "9a08d8bc6b6b6c03b755",
+    "revision": "59e2102cc262bba07200",
     "url": "/donko/static/css/main.d8ae9297.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/donko/static/js/2.3049d38a.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "9a08d8bc6b6b6c03b755",
-    "url": "/donko/static/js/main.d63cbf2b.chunk.js"
+    "revision": "59e2102cc262bba07200",
+    "url": "/donko/static/js/main.750ed398.chunk.js"
   },
   {
     "revision": "06ce7c8d9c005eb43575",
