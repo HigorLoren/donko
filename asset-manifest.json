@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/donko/static/css/main.d8ae9297.chunk.css",
-    "main.js": "/donko/static/js/main.0f14ca9b.chunk.js",
-    "main.js.map": "/donko/static/js/main.0f14ca9b.chunk.js.map",
+    "main.js": "/donko/static/js/main.d63cbf2b.chunk.js",
+    "main.js.map": "/donko/static/js/main.d63cbf2b.chunk.js.map",
     "runtime-main.js": "/donko/static/js/runtime-main.693e1d72.js",
     "runtime-main.js.map": "/donko/static/js/runtime-main.693e1d72.js.map",
     "static/css/2.3c03f26f.chunk.css": "/donko/static/css/2.3c03f26f.chunk.css",
     "static/js/2.3049d38a.chunk.js": "/donko/static/js/2.3049d38a.chunk.js",
     "static/js/2.3049d38a.chunk.js.map": "/donko/static/js/2.3049d38a.chunk.js.map",
     "index.html": "/donko/index.html",
-    "precache-manifest.df46e6c9b870d6de08f07b6b884503b8.js": "/donko/precache-manifest.df46e6c9b870d6de08f07b6b884503b8.js",
+    "precache-manifest.3522c406332fc5cde7e19382f1f6b6a8.js": "/donko/precache-manifest.3522c406332fc5cde7e19382f1f6b6a8.js",
     "service-worker.js": "/donko/service-worker.js",
     "static/css/2.3c03f26f.chunk.css.map": "/donko/static/css/2.3c03f26f.chunk.css.map",
     "static/css/main.d8ae9297.chunk.css.map": "/donko/static/css/main.d8ae9297.chunk.css.map",
@@ -24,6 +24,6 @@
     "static/css/2.3c03f26f.chunk.css",
     "static/js/2.3049d38a.chunk.js",
     "static/css/main.d8ae9297.chunk.css",
-    "static/js/main.0f14ca9b.chunk.js"
+    "static/js/main.d63cbf2b.chunk.js"
   ]
 }
