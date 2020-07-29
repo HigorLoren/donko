@@ -2,10 +2,13 @@
   "name": "donko",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://higorloren.github.io/donko",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "prettier": {
     "printWidth": 100,
@@ -30,6 +33,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@fortawesome/react-fontawesome": "^0.1.6",
+    "gh-pages": "^3.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-color": "^2.17.3",
@@ -37,14 +41,13 @@
     "react-redux": "^7.1.1",
     "react-reveal": "^1.2.2",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.0.1",
+    "react-scripts": "^3.4.1",
     "react-transition-group": "^4.3.0",
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
     "tachyons": "^4.11.1"
   },
   "devDependencies": {
-    "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-import": "^2.18.2",
