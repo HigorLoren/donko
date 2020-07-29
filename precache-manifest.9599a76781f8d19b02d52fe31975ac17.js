@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "86bbb75b27691177dfdff1c711ef9144",
+    "revision": "5adde40e6f62e7b274a5fd24c5bf31bd",
     "url": "/donko/index.html"
   },
   {
