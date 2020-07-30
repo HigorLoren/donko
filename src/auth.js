@@ -11,15 +11,15 @@ class Auth {
     // BACKENDPLACEHOLDER:
     // Go to db and verify token and ip
     const userDB = {
-      name: 'Logged',
-      image: defaultProfilePic
+      name: 'Username',
+      image: defaultProfilePic,
     };
     // --END--
 
     store.dispatch(
       setCurrentUser({
         name: userDB.name,
-        image: userDB.image
+        image: userDB.image,
       })
     );
 

@@ -6,12 +6,12 @@ import { setCurrentUser } from '../../redux/user/user.actions';
 import useForm from '../../hooks/useForm/useForm';
 import Auth from '../../auth';
 
-const Login = props => {
+const Login = (props) => {
   if (Auth.isUserAuthenticated()) {
     props.history.push('/');
   }
 
-  const login = userDataForm => {
+  const login = (userDataForm) => {
     Auth.authenticateUser(userDataForm.rememberMe) && props.history.push('/');
   };
 
@@ -30,6 +30,7 @@ const Login = props => {
               placeholder="Email"
               onChange={handleChange}
               id="email-address"
+              value="test@mail.com"
               required
             />
           </div>
@@ -41,6 +42,7 @@ const Login = props => {
               placeholder="Password"
               onChange={handleChange}
               id="password"
+              value="passwordtest"
               required
             />
           </div>
@@ -50,6 +52,18 @@ const Login = props => {
           </label>
         </fieldset>
         <div className="">
+          <span
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0px 0 7px 0px',
+              color: '#696969',
+              fontSize: '12px',
+            }}
+          >
+            Any email and password will work (for now)
+          </span>
           <input
             className="ph3 fw5 b--moon-gray br2 w-100 mid-gray pv2 input-reset ba bg-transparent hover-bg-light-gray bg-animate pointer f5 dib"
             type="submit"
@@ -75,17 +89,12 @@ const Login = props => {
   );
 };
 
-const mapStateToProps = state => ({
-  currentUser: state.user.currentUser
+const mapStateToProps = (state) => ({
+  currentUser: state.user.currentUser,
 });
 
-const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
+const mapDispatchToProps = (dispatch) => ({
+  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Login)
-);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));

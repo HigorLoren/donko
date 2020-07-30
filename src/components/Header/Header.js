@@ -10,7 +10,7 @@ import SearchBar from '../SearchBar/SearchBar';
 // import notificationIcon from "./notification.svg";
 import classes from './Header.module.css';
 
-const Header = props => {
+const Header = (props) => {
   const [showFloatMenu, setShowFloatMenu] = useState(false);
   const [showModalSignOut, setShowModalSignOut] = useState(false);
 
@@ -39,7 +39,7 @@ const Header = props => {
       <div className={classes.SpacerHeader} />
       <button
         className={`${classes.UserMenu} ml2 pl3 pr0 dark-gray fw5 dim pointer flex items-center mid-gray`}
-        onClick={() => setShowFloatMenu(prevState => !prevState)}
+        onClick={() => setShowFloatMenu((prevState) => !prevState)}
         type="button"
       >
         <img
@@ -54,16 +54,16 @@ const Header = props => {
         <FloatMenu
           customStyle={{ top: '94%' }}
           buttons={[
-            {
-              onClickFunction: () => {},
-              icon: 'user-cog',
-              text: 'Account Settings'
-            },
+            // {
+            //   onClickFunction: () => {},
+            //   icon: 'user-cog',
+            //   text: 'Account Settings'
+            // },
             {
               onClickFunction: () => setShowModalSignOut(true),
               icon: 'sign-out-alt',
-              text: 'Sign Out'
-            }
+              text: 'Sign Out',
+            },
           ]}
           deleteMe={() => setShowFloatMenu(false)}
         />
@@ -89,11 +89,11 @@ const Header = props => {
 
 Header.propTypes = {
   dataToSearch: PropTypes.arrayOf(PropTypes.object).isRequired,
-  currentUser: PropTypes.objectOf(PropTypes.string).isRequired
+  currentUser: PropTypes.objectOf(PropTypes.string).isRequired,
 };
 
-const mapStateToProps = state => ({
-  currentUser: state.user.currentUser
+const mapStateToProps = (state) => ({
+  currentUser: state.user.currentUser,
 });
 
 export default withRouter(connect(mapStateToProps)(Header));

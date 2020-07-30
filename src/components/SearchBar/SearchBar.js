@@ -1,33 +1,37 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import ClickedOutside from "../../hoc/ClickedOutside/ClickedOutside";
-import searchIcon from "../../assets/search.svg";
-import classes from "./SearchBar.module.css";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import ClickedOutside from '../../hoc/ClickedOutside/ClickedOutside';
+import searchIcon from '../../assets/search.svg';
+import classes from './SearchBar.module.css';
 
-const SearchBar = props => {
-  const [searchInput, setSearchInput] = useState("");
+const SearchBar = (props) => {
+  const [searchInput, setSearchInput] = useState('');
   const [showSearchList, setShowSearchList] = useState(false);
   const [searchResultItems, setSearchResultItems] = useState([]);
 
-  const handleSearch = inputText => {
+  const handleSearch = (inputText) => {
     // TODO: SEARCH SCRIPT
     let dataToSearch = [];
 
-    dataToSearch.push({
-      title: "",
-      path: "",
-      type: ""
-    });
+    if (props.boardsToSearch !== undefined) {
+      props.boardsToSearch.forEach((board) => {
+        dataToSearch.push({
+          title: board.name,
+          path: '',
+          type: '',
+        });
+      });
+    }
 
-    const inputTextFormatedAndSplited = inputText.toLowerCase().split(" ");
+    const inputTextFormatedAndSplited = inputText.toLowerCase().split(' ');
 
     // Search Script
-    dataToSearch = dataToSearch.filter(item => {
+    dataToSearch = dataToSearch.filter((item) => {
       const itemFormated = JSON.stringify(item).toLowerCase();
       let allWordsMatched;
 
       // Do while returning true
-      inputTextFormatedAndSplited.every(word => {
+      inputTextFormatedAndSplited.every((word) => {
         allWordsMatched = itemFormated.indexOf(word) !== -1;
         return allWordsMatched;
       });
@@ -53,7 +57,7 @@ const SearchBar = props => {
     <ClickedOutside onClickedOutside={() => setShowSearchList(false)}>
       <div
         className={`${classes.SearchDiv} relative items-center inline-flex w-100 ${
-          props.customStyle ? props.customStyle : ""
+          props.customStyle ? props.customStyle : ''
         }`}
       >
         <img src={searchIcon} alt="Search Icon" className={`${classes.SearchIcon} absolute z-3`} />
@@ -69,9 +73,7 @@ const SearchBar = props => {
         />
         {showSearchList ? (
           <ul
-            className={`${
-              classes.SearchResultItemList
-            } flex shadow-6 br2 flex-column overflow-auto bg-white pl0 mv0 top100 absolute w-100 z-1`}
+            className={`${classes.SearchResultItemList} flex shadow-6 br2 flex-column overflow-auto bg-white pl0 mv0 top100 absolute w-100 z-1`}
           >
             {searchResultItems.map((item, index) => {
               return (
@@ -87,7 +89,7 @@ const SearchBar = props => {
                   </h4>
                   {item.path ? (
                     <p className="mt0 mb1 f7 silver">
-                      {item.path} {">"} {item.title}
+                      {item.path} {'>'} {item.title}
                     </p>
                   ) : null}
                 </a>
@@ -101,11 +103,11 @@ const SearchBar = props => {
 };
 
 SearchBar.propTypes = {
-  customStyle: PropTypes.string
+  customStyle: PropTypes.string,
 };
 
 SearchBar.defaultProps = {
-  customStyle: ""
+  customStyle: '',
 };
 
 export default SearchBar;

@@ -7,7 +7,7 @@ import FloatMenu from '../UI/FloatMenu/FloatMenu';
 import classes from './SidebarMenu.module.css';
 import ClickedOutside from '../../hoc/ClickedOutside/ClickedOutside';
 
-const SidebarMenu = props => {
+const SidebarMenu = (props) => {
   const [showFloatMenuConfig, changeShowFloatMenuConfig] = useState(false);
   const [showFloatMenuBoard, changeShowFloatMenuBoard] = useState(false);
 
@@ -19,8 +19,8 @@ const SidebarMenu = props => {
           // eslint-disable-next-line react/prop-types
           onClickFunction: () => null,
           icon: '',
-          text: 'Delete Board'
-        }
+          text: 'Delete Board',
+        },
       ]}
       deleteMe={() => changeShowFloatMenuBoard(false)}
     />
@@ -61,17 +61,17 @@ const SidebarMenu = props => {
 
   return (
     <div className={`${classes.SidebarMenu} ph0 fl flex flex-wrap flex-column`}>
-      {props.boards.map(board => {
+      {props.boards.map((board) => {
         return (
           <div key={`boardOption_${board.id}`} className={`${classes.BoardOption} noselect`}>
             <button
               key={board.id}
               type="button"
-              onMouseUp={e => handleMouseUpBoardOption(e, board)}
-              onTouchStart={e => handleMouseDownBoardOption(e, board)}
-              onTouchEnd={e => handleMouseUpBoardOption(e, board)}
-              onMouseDown={e => handleMouseDownBoardOption(e, board)}
-              onMouseLeave={e => handleMouseLeaveBoardOption(e, board)}
+              onMouseUp={(e) => handleMouseUpBoardOption(e, board)}
+              onTouchStart={(e) => handleMouseDownBoardOption(e, board)}
+              onTouchEnd={(e) => handleMouseUpBoardOption(e, board)}
+              onMouseDown={(e) => handleMouseDownBoardOption(e, board)}
+              onMouseLeave={(e) => handleMouseLeaveBoardOption(e, board)}
               className={`tc w-100 ${classes.BoardOptionButton} ${
                 props.boardSelected === board.id ? classes.BoardOptionSelected : 'pointer'
               }`}
@@ -104,12 +104,12 @@ const SidebarMenu = props => {
       </div>
       <div
         className={`${classes.SettingsMenuOption} tc w-100 relative`}
-        style={{ marginTop: 'auto' }}
+        style={{ marginTop: 'auto', display: 'none' }}
       >
         <button
           className="pointer"
           type="button"
-          onClick={() => changeShowFloatMenuConfig(prevState => !prevState)}
+          onClick={() => changeShowFloatMenuConfig((prevState) => !prevState)}
         >
           <FontAwesomeIcon icon="cog" size="2x" className="light-silver" />
         </button>
@@ -121,8 +121,8 @@ const SidebarMenu = props => {
                 // eslint-disable-next-line react/prop-types
                 onClickFunction: () => props.history.push('/settings'),
                 icon: '',
-                text: 'Settings'
-              }
+                text: 'Settings',
+              },
             ]}
             deleteMe={() => changeShowFloatMenuConfig(false)}
           />
@@ -136,13 +136,13 @@ SidebarMenu.propTypes = {
   newBoard: PropTypes.func,
   boards: PropTypes.arrayOf(PropTypes.object).isRequired,
   boardClicked: PropTypes.func,
-  boardSelected: PropTypes.number
+  boardSelected: PropTypes.number,
 };
 
 SidebarMenu.defaultProps = {
   boardClicked: () => null,
   newBoard: () => null,
-  boardSelected: null
+  boardSelected: null,
 };
 
 export default withRouter(SidebarMenu);
