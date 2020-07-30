@@ -2,7 +2,7 @@
 
 Another Kanban Web App (but simple and Open Source).
 
-[![Screenshot website](https://github.com/HigorLoren/donko/tree/master/.github/readme-banner.jpg?raw=true)](https://higorloren.github.io/donko/)
+[![Screenshot website](https://raw.githubusercontent.com/HigorLoren/donko/master/.github/readme-banner.jpg)](https://higorloren.github.io/donko/)
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
 
