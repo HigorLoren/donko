@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5adde40e6f62e7b274a5fd24c5bf31bd",
+    "revision": "ddcd3d5fa1db3ce0c4846383aec1a94d",
     "url": "/donko/index.html"
   },
   {
-    "revision": "03ca437d1d06526cd4fe",
+    "revision": "e5249f50c245485fa9f5",
     "url": "/donko/static/css/2.3c03f26f.chunk.css"
   },
   {
-    "revision": "18d6e4d8a22c08533502",
-    "url": "/donko/static/css/main.d8ae9297.chunk.css"
+    "revision": "f77fe1093db3f30bd8ef",
+    "url": "/donko/static/css/main.05f9922e.chunk.css"
   },
   {
-    "revision": "03ca437d1d06526cd4fe",
-    "url": "/donko/static/js/2.3049d38a.chunk.js"
+    "revision": "e5249f50c245485fa9f5",
+    "url": "/donko/static/js/2.5474078d.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/donko/static/js/2.3049d38a.chunk.js.LICENSE.txt"
+    "url": "/donko/static/js/2.5474078d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "18d6e4d8a22c08533502",
-    "url": "/donko/static/js/main.3a7f8902.chunk.js"
+    "revision": "f77fe1093db3f30bd8ef",
+    "url": "/donko/static/js/main.18d6d36c.chunk.js"
   },
   {
     "revision": "06ce7c8d9c005eb43575",
