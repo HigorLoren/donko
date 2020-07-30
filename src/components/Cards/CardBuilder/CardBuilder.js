@@ -5,7 +5,7 @@ import classes from './CardBuilder.module.css';
 
 const newCardDashColor = '#636363';
 
-const CardBuilder = props => {
+const CardBuilder = (props) => {
   const [textInputNameCard, setTextInputNameCard] = useState('New Name');
   const [initial, setInitial] = useState(true);
 
@@ -21,7 +21,7 @@ const CardBuilder = props => {
     props.newCard({ name: textInputNameCard, dashColor: newCardDashColor });
   };
 
-  const handleKeyDown = event => {
+  const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       handleLeaveInputNameCard();
     }
@@ -44,7 +44,7 @@ const CardBuilder = props => {
             background: newCardDashColor,
             borderRadius: '0.5rem 0.5rem 0 0',
             height: '5px',
-            width: '100%'
+            width: '100%',
           }}
         />
         <div className="ph3">
@@ -57,7 +57,7 @@ const CardBuilder = props => {
               defaultValue={textInputNameCard}
               onBlur={handleLeaveInputNameCard}
               onKeyDown={handleKeyDown}
-              onChange={event => setTextInputNameCard(event.target.value)}
+              onChange={(event) => setTextInputNameCard(event.target.value)}
               className="f4 w-100 br2 bw1 b--moon-gray b--solid outline-0 ph2 gray ma0 fw5"
             />
             <button type="button" className="button-reset pointer gray hover-mid-gray textshadow-1">
@@ -69,7 +69,7 @@ const CardBuilder = props => {
               <input
                 type="text"
                 className="w-90 br2 pv1 pl3 bn shadow-6 lh-copy f6"
-                placeholder="new item"
+                placeholder="New item"
                 readOnly
               />
               <button
@@ -88,11 +88,11 @@ const CardBuilder = props => {
 
 CardBuilder.propTypes = {
   scrollToNewCard: PropTypes.func,
-  newCard: PropTypes.func.isRequired
+  newCard: PropTypes.func.isRequired,
 };
 
 CardBuilder.defaultProps = {
-  scrollToNewCard: () => null
+  scrollToNewCard: () => null,
 };
 
 export default CardBuilder;

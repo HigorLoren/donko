@@ -22,7 +22,7 @@ const colorsPicker = [
   '#ABB8C3',
   '#EB144C',
   '#F78DA7',
-  '#9900EF'
+  '#9900EF',
 ];
 
 export default class Card extends PureComponent {
@@ -37,7 +37,7 @@ export default class Card extends PureComponent {
       deleteCardModalShow: false,
       showFloatMenu: false,
       todo: '',
-      notes: this.props.notes
+      notes: this.props.notes,
     };
   }
 
@@ -48,24 +48,24 @@ export default class Card extends PureComponent {
   // Notes Handlers
   //
 
-  handleAddNote = event => {
+  handleAddNote = (event) => {
     event.preventDefault();
     // BACKENDPLACEHOLDER:
     const updatedNotes = [
       ...this.state.notes,
-      { id: this.state.notes.length + 1, text: this.state.todo }
+      { id: this.state.notes.length + 1, text: this.state.todo },
     ];
     // --END--
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       notes: updatedNotes,
-      todo: ''
+      todo: '',
     }));
   };
 
-  handleDeleteNote = idNoteToDelete => {
+  handleDeleteNote = (idNoteToDelete) => {
     // BACKENDPLACEHOLDER:
     // eslint-disable-next-line react/no-access-state-in-setstate
-    const updatedNotes = this.state.notes.filter(note => note.id !== idNoteToDelete);
+    const updatedNotes = this.state.notes.filter((note) => note.id !== idNoteToDelete);
     //  --END--
     this.setState({ notes: updatedNotes });
   };
@@ -73,7 +73,7 @@ export default class Card extends PureComponent {
   // Cards Handlers
   //
 
-  handleCardRename = event => {
+  handleCardRename = (event) => {
     event.preventDefault();
     // BACKENDPLACEHOLDER:
     // eslint-disable-next-line react/no-access-state-in-setstate
@@ -82,7 +82,7 @@ export default class Card extends PureComponent {
     this.setState({ cardName: updatedCardName, renameCardModalShow: false });
   };
 
-  handleCardDashColorChange = event => {
+  handleCardDashColorChange = (event) => {
     // BACKENDPLACEHOLDER:
     // eslint-disable-next-line react/no-access-state-in-setstate
     const updatedDashColor = this.state.dashNewColor;
@@ -107,7 +107,7 @@ export default class Card extends PureComponent {
               <TwitterPicker
                 color={this.state.dashNewColor}
                 colors={colorsPicker}
-                onChange={color => this.setState({ dashNewColor: color.hex })}
+                onChange={(color) => this.setState({ dashNewColor: color.hex })}
                 width="100%"
               />
               <button
@@ -128,7 +128,7 @@ export default class Card extends PureComponent {
             <button
               className="button-reset pointer gray hover-mid-gray textshadow-1"
               onClick={() =>
-                this.setState(prevState => ({ showFloatMenu: !prevState.showFloatMenu }))
+                this.setState((prevState) => ({ showFloatMenu: !prevState.showFloatMenu }))
               }
               type="button"
             >
@@ -140,22 +140,22 @@ export default class Card extends PureComponent {
                   {
                     onClickFunction: () => this.setState({ dashColorChangePickerShow: true }),
                     icon: 'palette',
-                    text: 'Change dash color'
+                    text: 'Change dash color',
                   },
                   {
                     onClickFunction: () =>
-                      this.setState(prevState => ({
+                      this.setState((prevState) => ({
                         inputRenameCard: prevState.cardName,
-                        renameCardModalShow: true
+                        renameCardModalShow: true,
                       })),
                     icon: 'pen-square',
-                    text: 'Rename Card'
+                    text: 'Rename Card',
                   },
                   {
                     onClickFunction: () => this.setState({ deleteCardModalShow: true }),
                     icon: 'trash-alt',
-                    text: 'Delete Card'
-                  }
+                    text: 'Delete Card',
+                  },
                 ]}
                 deleteMe={() => this.setState({ showFloatMenu: false })}
               />
@@ -164,7 +164,7 @@ export default class Card extends PureComponent {
           <div className="w-100 mb2">
             <Notes
               notesArray={this.state.notes}
-              deleteNote={event => this.handleDeleteNote(event)}
+              deleteNote={(event) => this.handleDeleteNote(event)}
             />
           </div>
           <form onSubmit={this.handleAddNote} autoComplete="off" className="w-100 mb2">
@@ -172,8 +172,7 @@ export default class Card extends PureComponent {
               <input
                 type="text"
                 className="w-90 br2 pv1 pl3 bn shadow-6 lh-copy f6"
-                id="todoField"
-                placeholder="new item"
+                placeholder="New item"
                 name="todo"
                 value={this.state.todo}
                 onChange={this.handleChange}
@@ -244,9 +243,9 @@ Card.propTypes = {
   cardName: PropTypes.string.isRequired,
   dashColor: PropTypes.string.isRequired,
   notes: PropTypes.arrayOf(PropTypes.object),
-  deleteMe: PropTypes.func.isRequired
+  deleteMe: PropTypes.func.isRequired,
 };
 
 Card.defaultProps = {
-  notes: []
+  notes: [],
 };
