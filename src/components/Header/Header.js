@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Auth from '../../auth';
@@ -10,13 +10,14 @@ import SearchBar from '../SearchBar/SearchBar';
 // import notificationIcon from "./notification.svg";
 import classes from './Header.module.css';
 
-const Header = props => {
+const Header = (props) => {
   const [showFloatMenu, setShowFloatMenu] = useState(false);
   const [showModalSignOut, setShowModalSignOut] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogOut = () => {
     Auth.deauthenticateUser();
-    props.history.push('/login');
+    navigate('/login');
   };
 
   useEffect(() => {
@@ -39,7 +40,7 @@ const Header = props => {
       <div className={classes.SpacerHeader} />
       <button
         className={`${classes.UserMenu} ml2 pl3 pr0 dark-gray fw5 dim pointer flex items-center mid-gray`}
-        onClick={() => setShowFloatMenu(prevState => !prevState)}
+        onClick={() => setShowFloatMenu((prevState) => !prevState)}
         type="button"
       >
         <img
@@ -57,13 +58,13 @@ const Header = props => {
             {
               onClickFunction: () => {},
               icon: 'user-cog',
-              text: 'Account Settings'
+              text: 'Account Settings',
             },
             {
               onClickFunction: () => setShowModalSignOut(true),
               icon: 'sign-out-alt',
-              text: 'Sign Out'
-            }
+              text: 'Sign Out',
+            },
           ]}
           deleteMe={() => setShowFloatMenu(false)}
         />
@@ -89,11 +90,11 @@ const Header = props => {
 
 Header.propTypes = {
   dataToSearch: PropTypes.arrayOf(PropTypes.object).isRequired,
-  currentUser: PropTypes.objectOf(PropTypes.string).isRequired
+  currentUser: PropTypes.objectOf(PropTypes.string).isRequired,
 };
 
-const mapStateToProps = state => ({
-  currentUser: state.user.currentUser
+const mapStateToProps = (state) => ({
+  currentUser: state.user.currentUser,
 });
 
-export default withRouter(connect(mapStateToProps)(Header));
+export default connect(mapStateToProps)(Header);

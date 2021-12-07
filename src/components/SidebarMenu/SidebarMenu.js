@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import boardIcon from '../../assets/board.svg';
 import FloatMenu from '../UI/FloatMenu/FloatMenu';
 import classes from './SidebarMenu.module.css';
 import ClickedOutside from '../../hoc/ClickedOutside/ClickedOutside';
 
-const SidebarMenu = props => {
+const SidebarMenu = (props) => {
   const [showFloatMenuConfig, changeShowFloatMenuConfig] = useState(false);
   const [showFloatMenuBoard, changeShowFloatMenuBoard] = useState(false);
+  const navigate = useNavigate();
 
   const floatMenuBoard = showFloatMenuBoard ? (
     <FloatMenu
@@ -19,8 +20,8 @@ const SidebarMenu = props => {
           // eslint-disable-next-line react/prop-types
           onClickFunction: () => null,
           icon: '',
-          text: 'Delete Board'
-        }
+          text: 'Delete Board',
+        },
       ]}
       deleteMe={() => changeShowFloatMenuBoard(false)}
     />
@@ -61,17 +62,17 @@ const SidebarMenu = props => {
 
   return (
     <div className={`${classes.SidebarMenu} ph0 fl flex flex-wrap flex-column`}>
-      {props.boards.map(board => {
+      {props.boards.map((board) => {
         return (
           <div key={`boardOption_${board.id}`} className={`${classes.BoardOption} noselect`}>
             <button
               key={board.id}
               type="button"
-              onMouseUp={e => handleMouseUpBoardOption(e, board)}
-              onTouchStart={e => handleMouseDownBoardOption(e, board)}
-              onTouchEnd={e => handleMouseUpBoardOption(e, board)}
-              onMouseDown={e => handleMouseDownBoardOption(e, board)}
-              onMouseLeave={e => handleMouseLeaveBoardOption(e, board)}
+              onMouseUp={(e) => handleMouseUpBoardOption(e, board)}
+              onTouchStart={(e) => handleMouseDownBoardOption(e, board)}
+              onTouchEnd={(e) => handleMouseUpBoardOption(e, board)}
+              onMouseDown={(e) => handleMouseDownBoardOption(e, board)}
+              onMouseLeave={(e) => handleMouseLeaveBoardOption(e, board)}
               className={`tc w-100 ${classes.BoardOptionButton} ${
                 props.boardSelected === board.id ? classes.BoardOptionSelected : 'pointer'
               }`}
@@ -109,7 +110,7 @@ const SidebarMenu = props => {
         <button
           className="pointer"
           type="button"
-          onClick={() => changeShowFloatMenuConfig(prevState => !prevState)}
+          onClick={() => changeShowFloatMenuConfig((prevState) => !prevState)}
         >
           <FontAwesomeIcon icon="cog" size="2x" className="light-silver" />
         </button>
@@ -119,10 +120,10 @@ const SidebarMenu = props => {
             buttons={[
               {
                 // eslint-disable-next-line react/prop-types
-                onClickFunction: () => props.history.push('/settings'),
+                onClickFunction: () => navigate('/settings'),
                 icon: '',
-                text: 'Settings'
-              }
+                text: 'Settings',
+              },
             ]}
             deleteMe={() => changeShowFloatMenuConfig(false)}
           />
@@ -136,13 +137,13 @@ SidebarMenu.propTypes = {
   newBoard: PropTypes.func,
   boards: PropTypes.arrayOf(PropTypes.object).isRequired,
   boardClicked: PropTypes.func,
-  boardSelected: PropTypes.number
+  boardSelected: PropTypes.number,
 };
 
 SidebarMenu.defaultProps = {
   boardClicked: () => null,
   newBoard: () => null,
-  boardSelected: null
+  boardSelected: null,
 };
 
-export default withRouter(SidebarMenu);
+export default SidebarMenu;

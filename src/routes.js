@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 import Workbench from './containers/Workbench/Workbench';
 import Settings from './containers/Settings/Settings';
@@ -8,14 +8,30 @@ import Register from './containers/Register/Register';
 
 import PrivateRoute from './hoc/PrivateRoute/PrivateRoute';
 
-const Routes = () => (
-  <Switch>
-    <Route exact path="/register" component={Register} />
-    <Route exact path="/login" component={Login} />
-    <PrivateRoute exact path="/settings" component={Settings} />
-    <PrivateRoute exact path="/" component={Workbench} />
-    <Redirect to="/" />
-  </Switch>
+const AppRoutes = () => (
+  <Routes>
+    <Route exact path="/register" element={<Register />} />
+    <Route exact path="/login" element={<Login />} />
+    <Route
+      exact
+      path="/settings"
+      element={
+        <PrivateRoute>
+          <Settings />
+        </PrivateRoute>
+      }
+    />
+    <Route
+      exact
+      path="/"
+      element={
+        <PrivateRoute>
+          <Workbench />
+        </PrivateRoute>
+      }
+    />
+    <Route path="*" render={() => <Navigate replace to="/" />} />
+  </Routes>
 );
 
-export default Routes;
+export default AppRoutes;

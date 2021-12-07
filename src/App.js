@@ -12,13 +12,13 @@ import {
   faTimes,
   faTimesCircle,
   faTrashAlt,
-  faUserCog
+  faUserCog,
 } from '@fortawesome/free-solid-svg-icons';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 
 import Auth from './auth';
-import Routes from './routes';
+import AppRoutes from './routes';
 
 library.add(
   faEllipsisV,
@@ -38,6 +38,6 @@ if (Auth.userHasToken() && !Auth.isUserAuthenticated()) {
   Auth.authenticateUser(Auth.getLocalToken());
 }
 
-const App = () => <Routes />;
+const App = () => <AppRoutes />;
 
 export default App;

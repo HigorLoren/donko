@@ -1,21 +1,23 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
+import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { setCurrentUser } from '../../redux/user/user.actions';
 import useForm from '../../hooks/useForm/useForm';
 import Auth from '../../auth';
 
-const Login = props => {
+const Login = (props) => {
   if (Auth.isUserAuthenticated()) {
-    props.history.push('/');
+    navigate('/');
   }
 
-  const login = userDataForm => {
-    Auth.authenticateUser(userDataForm.rememberMe) && props.history.push('/');
+  const login = (userDataForm) => {
+    Auth.authenticateUser(userDataForm.rememberMe) && navigate('/');
   };
 
   const { handleChange, handleSubmit } = useForm(login);
+  const navigate = useNavigate();
 
   return createPortal(
     <div className="measure center shadow-5 bg-white br3 pa4 mv3">
@@ -75,17 +77,12 @@ const Login = props => {
   );
 };
 
-const mapStateToProps = state => ({
-  currentUser: state.user.currentUser
+const mapStateToProps = (state) => ({
+  currentUser: state.user.currentUser,
 });
 
-const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
+const mapDispatchToProps = (dispatch) => ({
+  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Login)
-);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

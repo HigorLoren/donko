@@ -1,29 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Route, Redirect } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import Auth from '../../auth';
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={props =>
-      Auth.isUserAuthenticated() ? (
-        <Component {...props} />
+const PrivateRoute = ({ children }) => {
+  const location = useLocation();
+
+  return Auth.isUserAuthenticated() ? (
+        children
       ) : (
-        <Redirect
+        <Navigate
+          replace
           to={{
             pathname: '/login',
-            state: { from: props.location }
+            state: { from: location.pathname }
           }}
         />
       )
-    }
-  />
-);
+        };
 
 PrivateRoute.propTypes = {
-  component: PropTypes.any,
-  location: PropTypes.object
+  children: PropTypes.element,
 };
 
 export default PrivateRoute;

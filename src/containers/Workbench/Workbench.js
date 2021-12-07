@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import SidebarMenu from '../../components/SidebarMenu/SidebarMenu';
 import Modal from '../../components/Modal/Modal';
@@ -182,4 +181,4 @@ class Workbench extends Component {
   }
 }
 
-export default withRouter(Workbench);
+export default Workbench;
