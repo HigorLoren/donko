@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion, AnimatePresence } from 'framer-motion';
 import classes from './Modal.module.css';
 
-const Modal = (props) => {
-  const [showModal, setShowModal] = useState(false);
-
+const Modal = props => {
   const handleShowModal = () => {
-    setShowModal(true);
-    document.addEventListener('keyup', (e) => {
+    document.addEventListener('keyup', e => {
       if (e.key === 'Escape') handleCloseModal();
     });
   };
@@ -20,10 +17,10 @@ const Modal = (props) => {
   };
 
   useEffect(() => {
-    document.body.classList.add('modal-open');
+    document.body.classList.add('overflow-hidden');
     handleShowModal();
     return () => {
-      document.body.classList.remove('modal-open');
+      document.body.classList.remove('overflow-hidden');
     };
   });
 
@@ -72,14 +69,14 @@ Modal.propTypes = {
   callbackCloseModal: PropTypes.func,
   title: PropTypes.string,
   children: PropTypes.node,
-  footer: PropTypes.node,
+  footer: PropTypes.node
 };
 
 Modal.defaultProps = {
   callbackCloseModal: () => null,
   title: '',
   children: null,
-  footer: null,
+  footer: null
 };
 
 export default Modal;
