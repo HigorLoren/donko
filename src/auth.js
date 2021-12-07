@@ -11,7 +11,7 @@ class Auth {
     // BACKENDPLACEHOLDER:
     // Go to db and verify token and ip
     const userDB = {
-      name: 'Logged',
+      name: 'Username',
       image: defaultProfilePic
     };
     // --END--

@@ -55,11 +55,11 @@ const Header = props => {
         <FloatMenu
           customStyle={{ top: '94%' }}
           buttons={[
-            {
-              onClickFunction: () => {},
-              icon: 'user-cog',
-              text: 'Account Settings'
-            },
+            // {
+            //   onClickFunction: () => {},
+            //   icon: 'user-cog',
+            //   text: 'Account Settings'
+            // },
             {
               onClickFunction: () => setShowModalSignOut(true),
               icon: 'sign-out-alt',

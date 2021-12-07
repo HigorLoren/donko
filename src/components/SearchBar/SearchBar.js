@@ -13,11 +13,15 @@ const SearchBar = props => {
     // TODO: SEARCH SCRIPT
     let dataToSearch = [];
 
-    dataToSearch.push({
-      title: '',
-      path: '',
-      type: ''
-    });
+    if (props.boardsToSearch !== undefined) {
+      props.boardsToSearch.forEach(board => {
+        dataToSearch.push({
+          title: board.name,
+          path: '',
+          type: ''
+        });
+      });
+    }
 
     const inputTextFormatedAndSplited = inputText.toLowerCase().split(' ');
 

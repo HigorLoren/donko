@@ -51,6 +51,18 @@ const Login = props => {
           </label>
         </fieldset>
         <div className="">
+          <span
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0px 0 7px 0px',
+              color: '#696969',
+              fontSize: '12px'
+            }}
+          >
+            Any email and password will work (for now)
+          </span>
           <input
             className="ph3 fw5 b--moon-gray br2 w-100 mid-gray pv2 input-reset ba bg-transparent hover-bg-light-gray bg-animate pointer f5 dib"
             type="submit"
