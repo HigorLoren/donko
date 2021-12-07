@@ -33,7 +33,7 @@ const Notes = props => {
           </div>
         </motion.div>
       ))}
-     </AnimatePresence>
+    </AnimatePresence>
   );
 };
 

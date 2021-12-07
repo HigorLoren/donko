@@ -11,7 +11,7 @@ function FloatMenu(props) {
       <AnimatePresence>
         <motion.ul
           initial={{ opacity: 0, x: 3, height: 0 }}
-          animate={{ opacity: 1, x: 0, height: "auto", transition: { duration: 0.15 } }}
+          animate={{ opacity: 1, x: 0, height: 'auto', transition: { duration: 0.15 } }}
           exit={{ opacity: 0, x: 3, height: 0 }}
           ul
           className={classes.FloatDropdownMenu}
@@ -40,11 +40,11 @@ function FloatMenu(props) {
 FloatMenu.propTypes = {
   deleteMe: PropTypes.func.isRequired,
   buttons: PropTypes.arrayOf(PropTypes.object).isRequired,
-  customStyle: PropTypes.objectOf(PropTypes.string),
+  customStyle: PropTypes.objectOf(PropTypes.string)
 };
 
 FloatMenu.defaultProps = {
-  customStyle: {},
+  customStyle: {}
 };
 
 export default memo(FloatMenu);

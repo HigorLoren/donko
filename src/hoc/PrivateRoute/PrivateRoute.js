@@ -7,20 +7,20 @@ const PrivateRoute = ({ children }) => {
   const location = useLocation();
 
   return Auth.isUserAuthenticated() ? (
-        children
-      ) : (
-        <Navigate
-          replace
-          to={{
-            pathname: '/login',
-            state: { from: location.pathname }
-          }}
-        />
-      )
-        };
+    children
+  ) : (
+    <Navigate
+      replace
+      to={{
+        pathname: '/login',
+        state: { from: location.pathname }
+      }}
+    />
+  );
+};
 
 PrivateRoute.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.element
 };
 
 export default PrivateRoute;

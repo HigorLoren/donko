@@ -5,7 +5,7 @@ import useForm from '../../hooks/useForm/useForm';
 import Auth from '../../auth';
 import classes from './Register.module.css';
 
-const SignUp = (props) => {
+const SignUp = props => {
   const [alertBox, setAlertBox] = useState({ type: undefined, error: ' ' });
   const navigate = useNavigate();
 
@@ -19,13 +19,13 @@ const SignUp = (props) => {
     // Cleaning the messages
     setTimeout(() => {
       // First hide with changing the type
-      setAlertBox((old) => ({ type: undefined, error: old.error }));
+      setAlertBox(old => ({ type: undefined, error: old.error }));
       // Second wait until disappear and clear the error text
       setTimeout(() => setAlertBox({ type: undefined, error: '' }), 1010);
     }, timeToDisplay);
   };
 
-  const validateForm = (userDataForm) => {
+  const validateForm = userDataForm => {
     if (userDataForm.password !== userDataForm.passwordToConfirm) {
       setAlertBoxTimeout(
         { type: classes.AlertBoxDanger, error: 'The passwords must match.' },
@@ -46,7 +46,7 @@ const SignUp = (props) => {
     return true;
   };
 
-  const login = (userDataForm) => {
+  const login = userDataForm => {
     const isFormValid = validateForm(userDataForm);
 
     if (isFormValid) if (Auth.authenticateUser(Auth.createUser(userDataForm))) navigate('/');
