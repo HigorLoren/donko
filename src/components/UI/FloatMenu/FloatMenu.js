@@ -1,15 +1,22 @@
-import React, { memo } from "react";
-import PropTypes from "prop-types";
-import { Fade } from "react-reveal";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ClickedOutside from "../../../hoc/ClickedOutside/ClickedOutside";
-import classes from "./FloatMenu.module.css";
+import React, { memo } from 'react';
+import PropTypes from 'prop-types';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ClickedOutside from '../../../hoc/ClickedOutside/ClickedOutside';
+import classes from './FloatMenu.module.css';
 
 function FloatMenu(props) {
   return (
     <ClickedOutside onClickedOutside={props.deleteMe}>
-      <Fade duration={250}>
-        <ul className={classes.FloatDropdownMenu} style={props.customStyle}>
+      <AnimatePresence>
+        <motion.ul
+          initial={{ opacity: 0, x: 3, height: 0 }}
+          animate={{ opacity: 1, x: 0, height: "auto", transition: { duration: 0.15 } }}
+          exit={{ opacity: 0, x: 3, height: 0 }}
+          ul
+          className={classes.FloatDropdownMenu}
+          style={props.customStyle}
+        >
           {props.buttons.map((button, index) => (
             <li key={index}>
               <button
@@ -24,8 +31,8 @@ function FloatMenu(props) {
               </button>
             </li>
           ))}
-        </ul>
-      </Fade>
+        </motion.ul>
+      </AnimatePresence>
     </ClickedOutside>
   );
 }
@@ -33,11 +40,11 @@ function FloatMenu(props) {
 FloatMenu.propTypes = {
   deleteMe: PropTypes.func.isRequired,
   buttons: PropTypes.arrayOf(PropTypes.object).isRequired,
-  customStyle: PropTypes.objectOf(PropTypes.string)
+  customStyle: PropTypes.objectOf(PropTypes.string),
 };
 
 FloatMenu.defaultProps = {
-  customStyle: {}
+  customStyle: {},
 };
 
 export default memo(FloatMenu);

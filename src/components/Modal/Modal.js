@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Fade } from 'react-reveal';
+import { motion, AnimatePresence } from 'framer-motion';
 import classes from './Modal.module.css';
 
-const Modal = props => {
+const Modal = (props) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => {
     setShowModal(true);
-    document.addEventListener('keyup', e => {
+    document.addEventListener('keyup', (e) => {
       if (e.key === 'Escape') handleCloseModal();
     });
   };
@@ -28,7 +28,7 @@ const Modal = props => {
   });
 
   return createPortal(
-    <Fade duration={300} when={showModal}>
+    <AnimatePresence>
       <div
         className={`${classes.Modal} fixed top-0 left-0 w-100 h-100 overflow-hidden outline-0"`}
         tabIndex="-1"
@@ -38,7 +38,13 @@ const Modal = props => {
           className={`${classes.BlackOffset} top-0 right-0 left-0 bottom-0`}
           onClick={handleCloseModal}
         />
-        <div className={`${classes.ModalDialog} flex w-auto relative items-center`} role="document">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.75 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0 }}
+          className={`${classes.ModalDialog} flex w-auto relative items-center`}
+          role="document"
+        >
           <div
             className={`${classes.ModalContent} pv3 br2 shadow-5 relative flex flex-column w-100 bg-white`}
           >
@@ -55,9 +61,9 @@ const Modal = props => {
             <div className="pa3">{props.children}</div>
             {props.footer ? <div className="flex ph3 justify-end">{props.footer}</div> : ''}
           </div>
-        </div>
+        </motion.div>
       </div>
-    </Fade>,
+    </AnimatePresence>,
     document.body
   );
 };
@@ -66,14 +72,14 @@ Modal.propTypes = {
   callbackCloseModal: PropTypes.func,
   title: PropTypes.string,
   children: PropTypes.node,
-  footer: PropTypes.node
+  footer: PropTypes.node,
 };
 
 Modal.defaultProps = {
   callbackCloseModal: () => null,
   title: '',
   children: null,
-  footer: null
+  footer: null,
 };
 
 export default Modal;
