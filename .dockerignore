@@ -1,0 +1,5 @@
+node_modules/
+docker-compose.yml
+docker-compose-prod.yml
+Dockerfile
+Dockerfile-prod
