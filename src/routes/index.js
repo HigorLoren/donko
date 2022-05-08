@@ -7,11 +7,28 @@ import Login from '../containers/Login/Login';
 import Register from '../containers/Register/Register';
 
 import PrivateRoute from './PrivateRoute';
+import NotAuthenticatedRoute from './NotAuthenticatedRoute';
 
 const AppRoutes = () => (
   <Routes>
-    <Route exact path="/register" element={<Register />} />
-    <Route exact path="/login" element={<Login />} />
+    <Route
+      exact
+      path="/register"
+      element={
+        <NotAuthenticatedRoute>
+          <Register />
+        </NotAuthenticatedRoute>
+      }
+    />
+    <Route
+      exact
+      path="/login"
+      element={
+        <NotAuthenticatedRoute>
+          <Login />
+        </NotAuthenticatedRoute>
+      }
+    />
     <Route
       exact
       path="/settings"
