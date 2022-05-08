@@ -4,18 +4,18 @@
     "node": true,
     "jest": true
   },
-  "extends": [
-    "airbnb/base",
-    "react-app",
-    "prettier"
-  ],
-  "plugins": [
-    "only-warn",
-    "prettier",
-    "import",
-    "react-hooks",
-    "jest"
-  ],
+  "extends": ["plugin:react/recommended", "airbnb-base", "prettier", "prettier/react"],
+  "plugins": ["only-warn", "prettier", "react", "jest"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "rules": {
     "prettier/prettier": "warn",
     "no-console": 0,
