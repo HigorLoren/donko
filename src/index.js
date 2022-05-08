@@ -2,15 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from './redux/store';
-import App from './App';
+import 'tachyons';
+
 import * as serviceWorker from './serviceWorker';
+import store from './redux/store';
+import AppRoutes from './routes';
+import './fontAwesome';
 import './index.css';
 
 ReactDOM.render(
   <Provider store={store}>
     <HashRouter>
-      <App />
+      <AppRoutes />
     </HashRouter>
   </Provider>,
   document.getElementById('root')
