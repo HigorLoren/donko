@@ -10,12 +10,12 @@ export default class ClickedOutside extends Component {
     document.removeEventListener('mousedown', this.handleClickOutside);
   }
 
-  handleClickOutside = event => {
+  handleClickOutside(event) {
     // IF exists the Ref of the wrapped component AND his dom children doesnt have the clicked component
     if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
       this.props.onClickedOutside();
     }
-  };
+  }
 
   render() {
     // In this piece of code I'm trying to get to the first not functional component

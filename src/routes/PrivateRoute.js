@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Navigate, useLocation } from 'react-router-dom';
-import Auth from '../../auth';
+import Auth from '../auth';
 
 const PrivateRoute = ({ children }) => {
   const location = useLocation();
 
-  return Auth.isUserAuthenticated() ? (
+  return Auth.userAuthenticated() ? (
     children
   ) : (
     <Navigate

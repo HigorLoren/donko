@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
-import Workbench from './containers/Workbench/Workbench';
-import Settings from './containers/Settings/Settings';
-import Login from './containers/Login/Login';
-import Register from './containers/Register/Register';
+import Workbench from '../containers/Workbench/Workbench';
+import Settings from '../containers/Settings/Settings';
+import Login from '../containers/Login/Login';
+import Register from '../containers/Register/Register';
 
-import PrivateRoute from './hoc/PrivateRoute/PrivateRoute';
+import PrivateRoute from './PrivateRoute';
 
 const AppRoutes = () => (
   <Routes>

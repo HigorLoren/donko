@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import ClickedOutside from '../../hoc/ClickedOutside/ClickedOutside';
+import ClickedOutside from '../../hoc/ClickedOutside';
 import searchIcon from '../../assets/search.svg';
 import classes from './SearchBar.module.css';
 

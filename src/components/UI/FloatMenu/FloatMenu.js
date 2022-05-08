@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import ClickedOutside from '../../../hoc/ClickedOutside/ClickedOutside';
+import ClickedOutside from '../../../hoc/ClickedOutside';
 import classes from './FloatMenu.module.css';
 
 function FloatMenu(props) {

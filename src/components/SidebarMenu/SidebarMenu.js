@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import boardIcon from '../../assets/board.svg';
 import FloatMenu from '../UI/FloatMenu/FloatMenu';
 import classes from './SidebarMenu.module.css';
-import ClickedOutside from '../../hoc/ClickedOutside/ClickedOutside';
+import ClickedOutside from '../../hoc/ClickedOutside';
 
 const SidebarMenu = props => {
   const [showFloatMenuConfig, changeShowFloatMenuConfig] = useState(false);
