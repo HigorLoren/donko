@@ -29,11 +29,11 @@ class Workbench extends Component {
     this.setState({ boards: loadedBoards });
   }
 
-  handleChange = ({ target: { name, value } }) => {
+  handleChange({ target: { name, value } }) {
     this.setState({ [name]: value });
-  };
+  }
 
-  handleSidebarItemChange = boardToChange => {
+  handleSidebarItemChange(boardToChange) {
     // BACKENDPLACEHOLDER:
     // prettier-ignore
     const cardsFromBoard = [
@@ -53,9 +53,9 @@ class Workbench extends Component {
         cards: cardsFromBoard
       }
     });
-  };
+  }
 
-  handleNewBoard = event => {
+  handleNewBoard(event) {
     event.preventDefault();
     // BACKENDPLACEHOLDER:
     let maxBoardId = 0;
@@ -70,9 +70,9 @@ class Workbench extends Component {
 
     this.setState({ boards: updatedBoards, newBoardModalShow: false });
     this.handleSidebarItemChange(newBoard);
-  };
+  }
 
-  handleDeleteBoard = boardToDelete => {
+  handleDeleteBoard(boardToDelete) {
     // BACKENDPLACEHOLDER:
     const updatedBoards = this.state.boards.filter(board => board.id !== boardToDelete.id);
     // --END--
@@ -81,7 +81,7 @@ class Workbench extends Component {
 
     console.log(boardToDelete);
 
-    this.setState(prevState => ({
+    this.setState(() => ({
       boards: updatedBoards,
       openedBoard: {
         id: null,
@@ -89,10 +89,10 @@ class Workbench extends Component {
         cards: []
       }
     }));
-  };
+  }
 
   // Handle Cards
-  handleNewCard = newCard => {
+  handleNewCard(newCard) {
     // BACKENDPLACEHOLDER:
     let maxCardId = 0;
     this.state.openedBoard.cards.forEach(card => {
@@ -116,9 +116,9 @@ class Workbench extends Component {
         cards: updatedCards
       }
     }));
-  };
+  }
 
-  handleDeleteCard = cardToDelete => {
+  handleDeleteCard(cardToDelete) {
     // BACKENDPLACEHOLDER:
     const updatedCards = this.state.openedBoard.cards.filter(card => card.id !== cardToDelete.id);
     // --END--
@@ -129,7 +129,7 @@ class Workbench extends Component {
         cards: updatedCards
       }
     }));
-  };
+  }
 
   render() {
     return (
