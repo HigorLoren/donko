@@ -18,6 +18,13 @@ class Workbench extends Component {
         cards: []
       })
     };
+
+    this.handleSidebarItemChange = this.handleSidebarItemChange.bind(this);
+    this.handleDeleteCard = this.handleDeleteCard.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleDeleteBoard = this.handleDeleteBoard.bind(this);
+    this.handleNewBoard = this.handleNewBoard.bind(this);
+    this.handleNewCard = this.handleNewCard.bind(this);
   }
 
   componentDidMount() {

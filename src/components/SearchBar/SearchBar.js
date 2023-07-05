@@ -103,7 +103,8 @@ const SearchBar = props => {
 };
 
 SearchBar.propTypes = {
-  customStyle: PropTypes.string
+  customStyle: PropTypes.string,
+  boardsToSearch: PropTypes.arrayOf(PropTypes.object)
 };
 
 SearchBar.defaultProps = {

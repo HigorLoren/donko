@@ -6,7 +6,7 @@ import Auth from '../auth';
 const PrivateRoute = ({ children }) => {
   const location = useLocation();
 
-  return Auth.userAuthenticated() ? (
+  return Auth.isUserAuthenticated() ? (
     children
   ) : (
     <Navigate

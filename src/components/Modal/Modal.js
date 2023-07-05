@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
@@ -6,14 +7,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import classes from './Modal.module.css';
 
 const Modal = props => {
+  const handleCloseModal = () => {
+    props.callbackCloseModal();
+  };
+
   const handleShowModal = () => {
     document.addEventListener('keyup', e => {
       if (e.key === 'Escape') handleCloseModal();
     });
-  };
-
-  const handleCloseModal = () => {
-    props.callbackCloseModal();
   };
 
   useEffect(() => {

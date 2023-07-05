@@ -23,7 +23,11 @@ class Auth {
       })
     );
 
-    remember ? localStorage.setItem('token', token) : sessionStorage.setItem('token', token);
+    if (remember) {
+      localStorage.setItem('token', token);
+    } else {
+      sessionStorage.setItem('token', token);
+    }
 
     return true;
   }
@@ -57,7 +61,7 @@ class Auth {
     return token;
   }
 
-  static createUser(userInfoFromInput) {
+  static createUser() {
     // BACKENDPLACEHOLDER:
     console.log('User created in DB and new token generated');
     const token = 'asdjashdassd';

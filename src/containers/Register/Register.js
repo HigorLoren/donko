@@ -5,7 +5,7 @@ import useForm from '../../hooks/useForm/useForm';
 import Auth from '../../auth';
 import classes from './Register.module.css';
 
-const SignUp = props => {
+const SignUp = () => {
   const [alertBox, setAlertBox] = useState({ type: undefined, error: ' ' });
   const navigate = useNavigate();
 

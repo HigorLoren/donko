@@ -39,16 +39,22 @@ export default class Card extends PureComponent {
       todo: '',
       notes: this.props.notes
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleAddNote = this.handleAddNote.bind(this);
+    this.handleDeleteNote = this.handleDeleteNote.bind(this);
+    this.handleCardRename = this.handleCardRename.bind(this);
+    this.handleCardDashColorChange = this.handleCardDashColorChange.bind(this);
   }
 
-  handleChange = ({ target: { name, value } }) => {
+  handleChange({ target: { name, value } }) {
     this.setState({ [name]: value });
-  };
+  }
 
   // Notes Handlers
   //
 
-  handleAddNote = event => {
+  handleAddNote(event) {
     event.preventDefault();
     // BACKENDPLACEHOLDER:
     const updatedNotes = [
@@ -61,39 +67,39 @@ export default class Card extends PureComponent {
       }
     ];
     // --END--
-    this.setState(prevState => ({
+    this.setState(() => ({
       notes: updatedNotes,
       todo: ''
     }));
-  };
+  }
 
-  handleDeleteNote = idNoteToDelete => {
+  handleDeleteNote(idNoteToDelete) {
     // BACKENDPLACEHOLDER:
     // eslint-disable-next-line react/no-access-state-in-setstate
     const updatedNotes = this.state.notes.filter(note => note.id !== idNoteToDelete);
     //  --END--
     this.setState({ notes: updatedNotes });
-  };
+  }
 
   // Cards Handlers
   //
 
-  handleCardRename = event => {
+  handleCardRename(event) {
     event.preventDefault();
     // BACKENDPLACEHOLDER:
     // eslint-disable-next-line react/no-access-state-in-setstate
     const updatedCardName = this.state.inputRenameCard || '.';
     // --END--
     this.setState({ cardName: updatedCardName, renameCardModalShow: false });
-  };
+  }
 
-  handleCardDashColorChange = event => {
+  handleCardDashColorChange() {
     // BACKENDPLACEHOLDER:
     // eslint-disable-next-line react/no-access-state-in-setstate
     const updatedDashColor = this.state.dashNewColor;
     // --END--
     this.setState({ dashColor: updatedDashColor, dashColorChangePickerShow: false });
-  };
+  }
 
   render() {
     return (

@@ -6,14 +6,15 @@ import { setCurrentUser } from '../../redux/user/user.actions';
 import useForm from '../../hooks/useForm/useForm';
 import Auth from '../../auth';
 
-const Login = props => {
+const Login = () => {
   const navigate = useNavigate();
   if (Auth.isUserAuthenticated()) {
     navigate('/');
   }
 
   const login = userDataForm => {
-    Auth.authenticateUser(userDataForm.rememberMe) && navigate('/');
+    Auth.authenticateUser(userDataForm.rememberMe);
+    navigate('/');
   };
 
   const { handleChange, handleSubmit } = useForm(login);

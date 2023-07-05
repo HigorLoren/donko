@@ -29,7 +29,7 @@ const SidebarMenu = props => {
 
   let showDelete = false;
 
-  const handleMouseLeaveBoardOption = (event, board) => {
+  const handleMouseLeaveBoardOption = () => {
     if (showDelete === true) {
       showDelete = false;
       console.log(`Leave  id: ${Math.round(Math.random() * 100)}`);
@@ -137,7 +137,8 @@ SidebarMenu.propTypes = {
   newBoard: PropTypes.func,
   boards: PropTypes.arrayOf(PropTypes.object).isRequired,
   boardClicked: PropTypes.func,
-  boardSelected: PropTypes.number
+  boardSelected: PropTypes.number,
+  handleDeleteBoard: PropTypes.func
 };
 
 SidebarMenu.defaultProps = {
